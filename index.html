@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navbar">
-        <div class="headerconteiner">
+    <div class="navbar show-menu">
+        <div class="headerconteiner ">
         <h1 class="logo">Blue<span>store</span></h1>
         <nav>
             <ul>
@@ -44,5 +44,14 @@
         </div>
     </div>
     </header>
+   
+    <script>
+        const navbar = document.querySelector(".navbar");
+        const menubutton = document.querySelector(".menu-button");
+        menubutton.addEventListener("click",() => {
+            navbar.classList.toggle("show-menu");
+
+        });
+    </script>
 </body>
 </html>
