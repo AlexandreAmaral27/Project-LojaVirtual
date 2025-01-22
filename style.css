@@ -177,3 +177,7 @@ body{
     grid-template-columns: repeat(3,1fr);
     gap: 3rem;
  }
+ .cols>img{
+    width: 352px;
+    height: 303px;
+ }
