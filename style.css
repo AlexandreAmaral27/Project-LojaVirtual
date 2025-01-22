@@ -171,11 +171,11 @@ body{
     display: grid;
     align-items: center;
     justify-content: space-evenly;
-    padding: 4rem 1rem;
+    padding: 4rem 4rem;
  }
  .cols3{
     grid-template-columns: repeat(3,1fr);
-    gap: 3rem;
+    gap: 2rem;
  }
  .cols>img{
     width: 352px;
