@@ -181,8 +181,9 @@ body{
     padding: 4rem 4rem;
  }
  .cols3{
+  
     grid-template-columns: repeat(3,1fr);
-    gap: 2rem;
+    gap: 1rem;
  }
  .cols3 img{
     width: 100%;
@@ -193,8 +194,8 @@ body{
 
  }
  .cols>img{
-    width: 352px;
-    height: 303px;
+    width: 215px;
+    height: 200px;
  }
  .cols4{
     grid-template-columns: repeat(4,1fr);
@@ -246,12 +247,13 @@ body{
    min-width: 500px;
  }
 
- @media(max-width:800px){
+ @media (max-width:800px){
    .selection-titulo{
       font-size: 1rem;
       
    }
    .cols3{
+         align-items: center;
          grid-template-columns: repeat(1, 1fr);
    }
    .cols4{
@@ -269,6 +271,7 @@ body{
       margin-bottom: 4rem;
    }
  }
+
    .testemunhos{
       display: flex;
       padding: 4rem 1rem;
