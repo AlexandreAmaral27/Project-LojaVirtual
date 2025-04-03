@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo/style.css">
+    <link rel="stylesheet" href="estilo/mediaquerystyle.css">
+    <style>
+      
+     
+        .cart {
+            position: relative;
+            cursor: pointer;
+            justify-content: right;
+        }
+        .cart span {
+            background: red;
+            color: white;
+            font-size: 12px;
+            padding: 5px 8px;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+        }
+        .produto {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+            text-align: center;
+        }
+        .produto-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .add-to-cart {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+        .cart-container {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: right 0.3s ease-in-out;
+            overflow-y: auto;
+        }
+        .cart-container.show {
+            right: 0;
+        }
+        .filter-container{
+          padding: 2%;
+         
+        }
+        .filter-container label{
+            padding: 10px;
+            color: white;
+            background-color: #007BFF;
+            border-radius: 20px;
+        }
+        .filter-container select{
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar show-menu">
+        <div class="headerconteiner ">
+        <h1 class="logo">A.roy<span>store</span></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Conta</a></li>
+             </ul> 
+       </nav>
+       <div class="cart" onclick="toggleCart()">
+        🛒 <span id="cart-count">0</span>
+    </div>
+    <div class="cart-container" id="cart-container">
+        <h2>Carrinho</h2>
+        <ul id="cart-items"></ul>
+        <button onclick="checkout()">Finalizar Compra</button>
+    </div>
+             <div class="navicon">
+                    <img src="images/cart.png">
+                    <img src="images/menu.png">
+     
+             </div>
+       
+       </div>  
+       
+    </div>
+    
+    <main>
+        <div class="filter-container">
+            <label for="category">Filtrar por categoria:</label>
+            <select id="category" onchange="filterProducts()">
+                <option value="all">Todos</option>
+                <option value="telefones">telefones</option>
+                <option value="computadores">computadores</option>
+                <option value="games">Games/Acessórios</option>
+                <option value="acessorios">Acessórios</option>
+            </select>
+
+            
+        </div>
+
+        <div class="produto-container" id="product-list">
+            <div class="produto" data-category="computadores">
+                <img src="images/products/product-1.png" alt="Produto 1">
+                <p>Computador</p>
+                <p class="preço">400.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="computadores">
+                <img src="images/products/product-2.png" alt="Produto 2">
+                <p>Computador Dell</p>
+                <p class="preço">270.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="computadores">
+                <img src="images/products/product-3.png" alt="Produto 3">
+                <p>Computador Dell 2</p>
+                <p class="preço">305.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="games">
+                <img src="images/products/product-4.png" alt="Produto 4">
+                <p>conjunto gamer</p>
+                <p class="preço">100.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Smartwatch', 100000)">Adicionar</button>
+            </div>
+
+            <div class="produto" data-category="eletronicos">
+                <img src="images/products/product-5.png" alt="Produto 1">
+                <p>Fone Bluetooth</p>
+                <p class="preço">54.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="games">
+                <img src="images/products/product-6.png" alt="Produto 2">
+                <p>Controle Play 5</p>
+                <p class="preço">70.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="games">
+                <img src="images/products/product-7.png" alt="Produto 3">
+                <p>Cadeira gamer</p>
+                <p class="preço">150.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="telefones">
+                <img src="images/products/product-8.png" alt="Produto 4">
+                <p>Iphone 14 pro max</p>
+                <p class="preço">900.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Smartwatch', 100000)">Adicionar</button>
+            </div>
+
+            <div class="produto" data-category="telefones">
+                <img src="images/products/product-9.png" alt="Produto 1">
+                <p>Samsung Galaxi S23 Ultra</p>
+                <p class="preço">954.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="games">
+                <img src="images/products/product-10.png" alt="Produto 2">
+                <p>Controle Xbox</p>
+                <p class="preço">70.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="telefones">
+                <img src="images/products/product-11.png" alt="Produto 3">
+                <p>Xiaomi</p>
+                <p class="preço">425.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="games">
+                <img src="images/products/product-12.png" alt="Produto 4">
+                <p>Xbox</p>
+                <p class="preço">600.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Smartwatch', 100000)">Adicionar</button>
+            </div>
+
+            <div class="produto" data-category="eletronicos">
+                <img src="images/products/product-13.png" alt="Produto 1">
+                <p>Fone Bluetooth</p>
+                <p class="preço">54.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="games">
+                <img src="images/products/product-14.png" alt="Produto 2">
+                <p>Play 5</p>
+                <p class="preço">700.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="computadores">
+                <img src="images/products/product-15.png" alt="Produto 3">
+                <p>PC Gamer</p>
+                <p class="preço">900.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
+            </div>
+           
+            
+        </div>
+       
+    </main>
+
+
+
+    <footer class="gray-background">
+        <div class="page-inner-content footer-content">
+          <div class="download-options">
+              <p>baixe a nossa aplicação</p>
+              <p>baixe a nossa aplicação para android e ios</p>
+              <div>
+                  <img src="images/app-store.png" alt="">
+                  <img src="images/play-store.png" alt="">
+              </div>
+          </div>
+          <div class="logo-footer">
+              <h1 class="logo">A.roy<span>store</span></h1>
+              <p>O objectivo da nossa loja virtual é ser um ágil instrumento para compra e/ou venda de produtos e/ou serviços, realizados por meio de ambiente digital (internet), e uma das bases do comércio da atualidade</p>
+          </div>
+          <div class="links-footer">
+              <h3>Links Úteis</h3>
+              <ul>
+                  <li>Cupons</li>
+                  <li>Blog Post</li>
+                  <li>Politicas</li>
+                  <li>Torne-se Afilhado</li>
+              </ul>
+          </div>
+      
+        </div>
+        <hr class="page-inner-content">
+        <div class="page-inner-content copyright">
+          <p>Copyright 2025 - Alexandre Amaral - todos direitos reservados</p>
+        </div>
+     </footer>
+
+
+
+    <script>
+        let cart = [];
+
+        function filterProducts() {
+            const category = document.getElementById("category").value;
+            const products = document.querySelectorAll(".produto");
+            products.forEach(product => {
+                product.style.display = (category === "all" || product.getAttribute("data-category") === category) ? "block" : "none";
+            });
+        }
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            document.getElementById("cart-count").innerText = cart.length;
+            let cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = "";
+            cart.forEach((item, index) => {
+                let li = document.createElement("li");
+                li.innerText = `${item.name} - ${item.price} Kzs`;
+                let removeBtn = document.createElement("button");
+                removeBtn.innerText = "X";
+                removeBtn.onclick = () => removeFromCart(index);
+                li.appendChild(removeBtn);
+                cartItems.appendChild(li);
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCart() {
+            document.getElementById("cart-container").classList.toggle("show");
+        }
+
+        function checkout() {
+            alert("Compra finalizada! Total: " + cart.reduce((sum, item) => sum + item.price, 0) + " Kzs");
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+    </script>
+</body>
+</html>

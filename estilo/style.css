@@ -56,13 +56,14 @@ body{
 
  nav ul li{
     color: white;
-    margin-right: 1.4rem;
+    margin-right: 1.9rem;
     cursor: pointer ;
+    transition: all 0.6s;
  }
  nav ul li:hover{
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     transition: all 0.4s;
-    font-weight: bold;
+    
     
  }
  nav ul li a{
@@ -117,53 +118,9 @@ body{
     flex-basis: 50%;
  }
  .header-bottom-side-right img{
-    width: 115%;
+    width: 100%;
  }
- /*Media Queries*/
- @media (max-width:800px) {
-    .logo{
-        font-size: 1.2rem;
-    }
-   
-    .header-bottom-side{
-        flex-direction: column;
-        text-align: center;
-        padding-top: 4rem;
-    }
-    nav{
-        display: none;
-        padding: 8px;
-        position: absolute;
-        top: 46px;
-        background-color: #2c2c2c;
-        width: 100%
-        
-        
-    }
-   
-    nav ul{
-        flex-direction: column;
-       
-    }
-    nav ul li:hover{
-        padding-left: 90px;
-        padding-right: 90px;
-        
-        background-color: #47434342;
-        border-radius: 999px;
-    }
-    nav ul li{
-     
-        text-align: center;
-        font-size: 1rem;
-        padding: .8rem;
-    }
-    
-    .menu-button{
-        display: block;
-    }
-  
- }
+ 
  main{
     background-color: #ebebeb;
  }
@@ -177,13 +134,13 @@ body{
  .cols{
     display: grid;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 4rem 4rem;
  }
  .cols3{
   
-    grid-template-columns: repeat(3,1fr);
-    gap: 1rem;
+    display: flex;
+    
  }
  .cols3 img{
     width: 100%;
@@ -244,33 +201,11 @@ body{
    padding: 5rem 1rem;
  }
  .exclusive img{
-   min-width: 500px;
+   min-width: 450px;
+
  }
 
- @media (max-width:800px){
-   .selection-titulo{
-      font-size: 1rem;
-      
-   }
-   .cols3{
-         align-items: center;
-         grid-template-columns: repeat(1, 1fr);
-   }
-   .cols4{
-      grid-template-columns: repeat(2,1fr);
-   }
-   .produto-name,.preço,.rate{
-      max-height: 1rem;
-      overflow: hidden;
-      font-size: 0.8rem;
-   }
-   .exclusive{
-      flex-direction: column-reverse;
-   }
-   .exclusive img{
-      margin-bottom: 4rem;
-   }
- }
+ 
 
    .testemunhos{
       display: flex;
@@ -309,14 +244,7 @@ body{
    font-weight: bold;
  }
 
- @media(max-width:800px){
-   .testemunhos{
-      flex-direction: column;
-   }
-   .testemunho{
-      margin-bottom: 1.2rem;
-   }
- }
+ 
  footer{
    background-color: #2c2c2c; 
  }
@@ -359,22 +287,4 @@ body{
    color: #fff;
    padding: 2rem 0;
    text-align: center;
- }
- @media(max-width:800px){
-   .footer-content{
-      display: inline;
-      font-size: 0.8rem;
-   }
-   .footer-content>div{
-      padding: 1rem;
-   }
-   .download-options div{
-      display: inline;
-   }
-   .download-options div img{
-      width: 120px;
-   }
-   .copyright{
-      font-size: 0.8rem;
-   }
  }
