@@ -27,6 +27,12 @@
     
    
 }
+.headerconteiner h2{
+    color: white; 
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #0056b3;
+}
 .produto-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

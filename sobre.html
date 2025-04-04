@@ -20,16 +20,17 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contacto-nos.html">Contact</a></li>
                 <li><a href="#">Conta</a></li>
              </ul> 
        </nav>
          
-             <div class="navicon">
-                    <img src="images/cart.png">
-                    <img src="images/menu.png">
-                    
-             </div>
+       <div class="navicon">
+        <img src="images/cart.png"> 
+          <div class="navicon2">
+              <img src="images/menu.png">
+          </div>
+  </div>
        </div>  
     </div>
     <header>
@@ -60,12 +61,134 @@
         </div>
         </header>
 
-    <main>
-         <div>
-           
+    <div class="cor-de-fundo">
+        
+            <div class="container">
+                <h2>Destaques</h2>
+                <div class="carousel">
+                    <div class="slides" id="slides">
+                        <div class="slide">
+                            <img src="images/products/product-1.png" alt="Destaque 1" width="60px" >
+                            <div class="overlay">Pc</div>
+                        </div>
+                        <div class="slide">
+                            <img src="images/products/product-7.png" alt="Destaque 2">
+                            <div class="overlay">Cadeira Game</div>
+                        </div>
+                        <div class="slide">
+                            <img src="images/products/product-8.png" alt="Destaque 3">
+                            <div class="overlay">Iphone 14 Pro Max</div>
+                        </div>
+                        <div class="slide">
+                            <img src="images/products/product-12.png" alt="Destaque 4">
+                            <div class="overlay">X-box</div>
+                        </div>
+                        <div class="slide">
+                            <img src="images/products/product-14.png" alt="Destaque 5">
+                            <div class="overlay">PlayStation 5</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button onclick="prevSlide()">&#10094; Previous</button>
+                    <button onclick="nextSlide()">Next &#10095;</button>
+                </div>
+                <div class="indicators" id="indicators"></div>
+            </div>
+        
+    </div>
 
-         </div>
-    </main>
+    <div>
+        <div class="page-inner-content">
+            <h3 class="selection-titulo">Produtos Selecionados</h3>
+            <div class="subtitulo"></div>
+            <div class="cols cols4">
+                <div class="produto">
+                    <img src="images/products/product-4.png" alt="">
+                    <p class="produto-name">Combo Gamer Meetion</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">54.000<span>Kzs</span></p> 
+                </div>
+                <div class="produto">
+                    <img src="images/products/product-5.png" alt="">
+                    <p class="produto-name">Venturs Xs(cooler)</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">54.000<span>Kzs</span></p> 
+                </div>  
+                <div class="produto">
+                    <img src="images/products/product-6.png" alt="">
+                    <p class="produto-name">Comando de Play 5</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">54.000<span>Kzs</span></p> 
+                </div>  
+                <div class="produto">
+                    <img src="images/products/product-7.png" alt="">
+                    <p class="produto-name">Cadeira Game</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">54.000<span>Kzs</span></p> 
+                </div>
+
+            </div>
+
+        </div>
+         <div class="page-inner-content">
+            <h3 class="selection-titulo">Outros Produtos</h3>
+            <div class="subtitulo"></div>
+            <div class="cols cols4">
+                <div class="produto">
+                    <img src="images/products/product-8.png" alt="">
+                    <p class="produto-name">Iphone 14 Pro Max</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">950.000<span>Kzs</span></p> 
+                </div>
+                <div class="produto">
+                    <img src="images/products/product-9.png" alt="">
+                    <p class="produto-name">Galaxi S23 Ultra</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">900.000<span>Kzs</span></p> 
+                </div>  
+                <div class="produto">
+                    <img src="images/products/product-10.png" alt="">
+                    <p class="produto-name">Combo Gamer Meetion</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">54.000<span>Kzs</span></p> 
+                </div>  
+                <div class="produto">
+                    <img src="images/products/product-11.png" alt="">
+                    <p class="produto-name">Xiaomi 12S Ultra</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">508.000<span>Kzs</span></p> 
+                </div>
+                <div class="produto">
+                    <img src="images/products/product-12.png" alt="">
+                    <p class="produto-name">Xbox Series X</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">600.000<span>Kzs</span></p> 
+                </div>
+                <div class="produto">
+                    <img src="images/products/product-13.png" alt="">
+                    <p class="produto-name">Combo Gamer Meetion</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">54.000<span>Kzs</span></p> 
+                </div>  
+                <div class="produto">
+                    <img src="images/products/product-14.png" alt="">
+                    <p class="produto-name">Play 5</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">600.000<span>Kzs</span></p> 
+                </div>  
+                <div class="produto">
+                    <img src="images/products/product-15.png" alt="">
+                    <p class="produto-name">Pc Gamer</p>
+                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <p class="preço">700.000<span>Kzs</span></p> 
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
 
     <footer class="gray-background">
         <div class="page-inner-content footer-content">
@@ -97,5 +220,37 @@
           <p>Copyright 2025 - Alexandre Amaral - todos direitos reservados</p>
         </div>
      </footer>
+
+     <script>
+        let index = 0;
+        function showSlide() {
+            const slides = document.getElementById('slides');
+            slides.style.transform = `translateX(${-index * 100}%)`;
+            updateIndicators();
+        }
+        function nextSlide() {
+            const totalSlides = document.querySelectorAll('.slide').length;
+            index = (index + 1) % totalSlides;
+            showSlide();
+        }
+        function prevSlide() {
+            const totalSlides = document.querySelectorAll('.slide').length;
+            index = (index - 1 + totalSlides) % totalSlides;
+            showSlide();
+        }
+        function updateIndicators() {
+            const indicators = document.getElementById('indicators');
+            indicators.innerHTML = '';
+            for (let i = 0; i < document.querySelectorAll('.slide').length; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === index) dot.classList.add('active');
+                dot.onclick = () => { index = i; showSlide(); };
+                indicators.appendChild(dot);
+            }
+        }
+        setInterval(nextSlide, 4000); // Troca automática a cada 4 segundos
+        document.addEventListener('DOMContentLoaded', updateIndicators);
+    </script>
 </body>
 </html>

@@ -18,11 +18,26 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contacto-nos.html">Contact</a></li>
                 <li><a href="#">Conta</a></li>
              </ul> 
        </nav>
-       <div class="cart" onclick="toggleCart()">
+      
+    <div class="navicon">
+        <img src="images/cart.png"> 
+          <div class="navicon2">
+              <img src="images/menu.png">
+          </div>
+  </div>
+       
+       </div>  
+       
+    </div>
+
+    <div class="navbar show-menu">
+        <div class="headerconteiner ">
+            <h2>Compras</h2>
+             <div class="cart" onclick="toggleCart()">
         🛒 <span id="cart-count">0</span>
     </div>
     <div class="cart-container" id="cart-container">
@@ -30,14 +45,8 @@
         <ul id="cart-items"></ul>
         <button onclick="checkout()">Finalizar Compra</button>
     </div>
-             <div class="navicon">
-                    <img src="images/cart.png">
-                    <img src="images/menu.png">
-     
-             </div>
-       
-       </div>  
-       
+        </div>
+
     </div>
     
     <main>

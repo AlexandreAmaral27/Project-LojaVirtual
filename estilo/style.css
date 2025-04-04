@@ -46,6 +46,9 @@ body{
     align-items: center;
 
 }
+.navicon2{
+   display: none;
+}
 .navicon img{
     width: 30px;
     cursor: pointer;

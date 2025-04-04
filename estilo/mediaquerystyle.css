@@ -40,7 +40,11 @@
         font-size: 1rem;
         padding: .8rem;
     }
-    
+    .navicon2{
+      display: block;
+      align-items: center;
+  
+  }
     .menu-button{
         display: block;
     }
