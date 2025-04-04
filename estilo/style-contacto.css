@@ -1,5 +1,4 @@
 
-
 .conteiner-contact{
     margin-left: auto;
     margin-right: auto;
@@ -7,6 +6,7 @@
     height:900px;
     background: url(../images/fundo.png) no-repeat center;
     background-size: cover;
+   
     
 }
 .conteiner-contact h1{
@@ -53,9 +53,24 @@
 }
 .conteiner-como-contactar button{
     margin-top: 2%;
-    padding: 10px;
+    padding: 14px;
     background-color: #0056b3;
     color: white;
+    border-radius: 20px;
+    border: none;
+    transition: all 2s ;
+}
+.conteiner-como-contactar button:hover{
+    box-shadow: 5px 8px 9px #0477f1;
+    background-color:  #1074de;
+    cursor: pointer;
+    transition: all 1s ;
+    transform: translateY(-2px);
+}
+.conteiner-como-contactar button:active{
+   transform: translate(-2px, 2px);
+    background-color:  #092d54;
+   
 }
 
 .conteiner-como-contactar01{
