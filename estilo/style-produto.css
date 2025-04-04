@@ -27,6 +27,26 @@
     
    
 }
+.navbar1{
+    background-color: #2c2c2c;
+    padding: 1rem;
+    position: sticky;
+    top: 28px;
+    box-shadow: 0px 10px rgba(58, 57, 57, 0.086);
+    z-index: 99;
+}
+.navbar1>.headerconteiner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.border{
+    height: 15vh;
+   
+}
+
 .headerconteiner h2{
     color: white; 
     padding: 5px;
