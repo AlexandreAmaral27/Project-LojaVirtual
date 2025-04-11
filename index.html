@@ -108,42 +108,7 @@
         transform: translateY(0);
       }
     }
-
-
-    @media (max-width: 800px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .menu {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 80vh;
-    background-color: rgba(44, 44, 44, 0.98);
-    z-index: 998;
-    animation: slideDown 0.3s ease-in-out;
-  }
-
-  .menu.show {
-    display: flex;
-  }
-
-  .menu li a {
-    font-size: 1.5rem;
-    color: white;
-  }
-}
-
   </style>
-
-  
   
 </head>
 <body>
@@ -373,28 +338,15 @@
           <p>Copyright 2025 - Alexandre Amaral - todos direitos reservados</p>
         </div>
      </footer>
-    
-
      <script>
         const hamburger = document.getElementById("hamburger");
         const menu = document.getElementById("menu");
-        const menuLinks = document.querySelectorAll(".menu li a");
-      
+    
         hamburger.addEventListener("click", () => {
           hamburger.classList.toggle("active");
           menu.classList.toggle("show");
         });
-      
-        menuLinks.forEach(link => {
-          link.addEventListener("click", () => {
-            menu.classList.remove("show");
-            hamburger.classList.remove("active");
-          });
-        });
       </script>
-      
-      
-      
 
    
 </body>
