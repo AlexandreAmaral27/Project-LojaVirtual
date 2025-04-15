@@ -93,17 +93,20 @@ html main{
 }
 
 .conteiner-como-contactar01 img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 .inner-como-contactar01{
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 13px;
     gap: 60px;
 }
 
 .Siga-nos img{
     border-radius: 50%;
 
+}
+.Siga-nos a{
+  text-decoration: none;
 }

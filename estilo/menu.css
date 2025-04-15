@@ -32,7 +32,7 @@ nav {
  
   /* HAMBURGER */
   .hamburger {
-    display: block;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
@@ -47,7 +47,7 @@ nav {
     border-radius: 2px;
     transition: all 0.3s ease;
   }
- 
+  
   .hamburger.active div:nth-child(1) {
     transform: rotate(45deg) translateY(8px);
   }
@@ -67,6 +67,7 @@ nav {
     }
  
     .menu {
+     
       display: flex;
       position: absolute;
       top: 260%;
@@ -85,6 +86,8 @@ nav {
       
       display: none;
     }
+    
+   
   }
  
   @keyframes slideDown {
