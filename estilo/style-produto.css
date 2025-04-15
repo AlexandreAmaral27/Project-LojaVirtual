@@ -30,7 +30,7 @@
 .navbar1{
     background-color: #2c2c2c;
     padding: 1rem;
-    position: sticky;
+    position: static;
     top: 28px;
     box-shadow: 0px 10px rgba(58, 57, 57, 0.086);
     z-index: 99;
