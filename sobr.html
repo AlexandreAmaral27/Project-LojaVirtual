@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - [Nome da Loja]</title>
+    <link rel="stylesheet" href="lim.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> <!-- Animações -->
+</head>
+<body>
+    <header class="sticky-header">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="/loja">Loja</a></li>
+                <li><a href="/contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <h1 data-aos="fade-up" data-aos-duration="1500">Sobre a [Nome da Loja]</h1>
+            
+            <p data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                Bem-vindo à [Nome da Loja]! Fundada em [ano de fundação], nossa missão sempre foi trazer produtos de qualidade para você. Acreditamos que a experiência de compra online pode ser prática, segura e, acima de tudo, satisfatória.
+            </p>
+            
+            <div class="history" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="300">
+                <h2>A História da [Nome da Loja]</h2>
+                <p>
+                    Em [ano de fundação], percebemos que havia uma lacuna no mercado para [descrever o nicho ou necessidade]. Foi então que decidimos criar um espaço online onde você pudesse encontrar [produtos/serviços] de alta qualidade e com preços acessíveis. Desde então, nosso compromisso é garantir sua satisfação e proporcionar uma experiência de compra única.
+                </p>
+            </div>
+
+            <div class="values" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500">
+                <h2>Missão, Visão e Valores</h2>
+                <p><strong>Missão:</strong> Oferecer [produtos ou serviços] que melhorem o seu dia a dia, com qualidade e atenção aos detalhes.</p>
+                <p><strong>Visão:</strong> Ser referência em [nicho do mercado], oferecendo soluções inovadoras e sustentáveis.</p>
+                <p><strong>Valores:</strong> Transparência, sustentabilidade, e compromisso com a qualidade.</p>
+            </div>
+
+            <div class="differentiation" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="700">
+                <h2>O Que Nos Diferencia</h2>
+                <p>Aqui, você encontra produtos de [alta qualidade] e um atendimento dedicado. Estamos comprometidos em oferecer uma experiência de compra ágil, com entrega rápida e um suporte ao cliente sempre disponível.</p>
+            </div>
+
+            <div class="testimonial">
+                <h2>O que nossos clientes dizem</h2>
+                <div class="testimonial-carousel" id="testimonialCarousel">
+                    <div class="testimonial-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                        <blockquote>
+                            "Comprei na [Nome da Loja] e fiquei impressionada com a qualidade dos produtos e o atendimento! Super recomendo!" - [Nome do Cliente]
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+                        <blockquote>
+                            "A experiência de compra foi incrível! A entrega foi super rápida e os produtos chegaram impecáveis. Recomendo demais!" - [Nome do Cliente]
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+                        <blockquote>
+                            "Eu simplesmente amo a [Nome da Loja]! Sempre encontro o que preciso, e o suporte é excelente." - [Nome do Cliente]
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 [Nome da Loja]. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+<script>
+    // Carrossel de Depoimentos (Testemunhos)
+let currentTestimonialIndex = 0;
+
+function rotateTestimonials() {
+    const testimonials = document.querySelectorAll('.testimonial-item');
+    const totalTestimonials = testimonials.length;
+
+    // Esconde todos os depoimentos
+    testimonials.forEach(item => item.style.transform = "translateX(-100%)");
+
+    // Exibe o depoimento atual
+    testimonials[currentTestimonialIndex].style.transform = "translateX(0)";
+    currentTestimonialIndex = (currentTestimonialIndex + 1) % totalTestimonials;
+
+    setTimeout(rotateTestimonials, 5000); // Muda a cada 5 segundos
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    rotateTestimonials(); // Inicia o carrossel após o carregamento da página
+
+    // Inicialização do AOS (para animações ao rolar)
+    AOS.init({
+        once: true,  // Executa animações apenas uma vez
+        duration: 1200 // Duração da animação
+    });
+});
+
+</script>
+</html>
