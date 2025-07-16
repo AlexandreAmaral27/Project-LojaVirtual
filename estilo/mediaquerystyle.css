@@ -45,6 +45,16 @@
       align-items: center;
   
   }
+  .header-bottom-side-left h2{
+   font-size: 3.5rem;
+   margin: auto;
+   max-width: 500px;
+}
+.header-bottom-side-left h3 {
+   
+   margin-top: 3%;
+   
+}
     .menu-button{
         display: block;
     }
