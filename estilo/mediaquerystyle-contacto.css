@@ -1,18 +1,13 @@
 
 @media (max-width:800px) {
 
-    .conteiner-contact{
+    .conteiner-contact {
         margin-left: auto;
         margin-right: auto;
         width: 100%;
-        height:900px;
-        background: url(../images/a.roy/fundo.png) no-repeat center;
+        height: 517px;
+        background: url(../images/a.roy/fundo.png) no-repeat center center;
         background-size: cover;
-       
-        
     }
-
-  
  
 }
-
