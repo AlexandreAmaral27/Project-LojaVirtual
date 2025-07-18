@@ -3,41 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="images/fav-icon/letra-a.png" type="image/x-icon">
+    <title>A.roy_Store</title>
     <link rel="stylesheet" href="estilo/style-produto.css">
     <link rel="stylesheet" href="estilo/style.css">
     <link rel="stylesheet" href="estilo/mediaquerystyle.css">
+    <link rel="stylesheet" href="estilo/menu.css">
+   
     
 </head>
 <body>
     <div class="navbar show-menu">
         <div class="headerconteiner ">
             <a href="index.html"><img src="images/logos/logo.png" alt=""  class="logo" alt="Logo" ></a>
-        
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contacto-nos.html">Contact</a></li>
-                <li><a href="conta.html">Conta</a></li>
-             </ul> 
-       </nav>
+    
+            <nav>
+                <ul class="show menu" id="menu">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="produtos.html">Produtos</a></li>
+                  <li><a href="sobre.html">Sobre</a></li>
+                  <li><a href="contacto-nos.html">Contato</a></li>
+                  <li><a href="conta.html">Conta</a></li>
+                </ul>
+             
+              
+              </nav>
+       
          
        <div class="navicon">
-        <img src="images/cart.png"> 
+        <img src="images/logos/cart.png"> 
           <div class="navicon2">
-              <img src="images/menu.png">
+            <div class="hamburger" id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <!-- <img src="images/menu.png"> -->
           </div>
-  </div>
+    </div>
        </div>  
     </div>
 
     <div class="navbar1 show-menu border">
+        
         <div class="headerconteiner ">
             <h2>Compras</h2>
              <div class="cart" onclick="toggleCart()">
         🛒 <span id="cart-count">0</span>
+
+        
     </div>
     <div class="cart-container" id="cart-container">
         <h2>Carrinho</h2>
@@ -56,7 +70,7 @@
                 <option value="telefones">telefones</option>
                 <option value="computadores">computadores</option>
                 <option value="games">Games/Acessórios</option>
-                <option value="acessorios">Acessórios</option>
+                <option value="acessorios">Tenis e outros Acessórios</option>
             </select>
 
             
@@ -165,35 +179,35 @@
 
 
     <footer class="gray-background">
-        <div class="page-inner-content footer-content">
-          <div class="download-options">
-              <p>baixe a nossa aplicação</p>
-              <p>baixe a nossa aplicação para android e ios</p>
-              <div>
-                  <img src="images/app-store.png" alt="">
-                  <img src="images/play-store.png" alt="">
-              </div>
-          </div>
-          <div class="logo-footer">
-            <a href="index.html"><img src="images/logos/logo.png" alt=""  class="logo" alt="Logo" ></a>
-              <p>O objectivo da nossa loja virtual é ser um ágil instrumento para compra e/ou venda de produtos e/ou serviços, realizados por meio de ambiente digital (internet), e uma das bases do comércio da atualidade</p>
-          </div>
-          <div class="links-footer">
-              <h3>Links Úteis</h3>
-              <ul>
-                  <li>Cupons</li>
-                  <li>Blog Post</li>
-                  <li>Politicas</li>
-                  <li>Torne-se Afilhado</li>
-              </ul>
-          </div>
-      
+      <div class="page-inner-content footer-content">
+        <div class="download-options">
+            <p>baixe a nossa aplicação</p>
+            <p>baixe a nossa aplicação para android e ios</p>
+            <div>
+                <img src="images/logos/app-store.png" alt="">
+                <img src="images/logos/play-store.png" alt="">
+            </div>
         </div>
-        <hr class="page-inner-content">
-        <div class="page-inner-content copyright">
-          <p>Copyright 2025 - Alexandre Amaral - todos direitos reservados</p>
+        <div class="logo-footer">
+          <a href="index.html"><img src="images/logos/logo.png" alt="" class="logo-footer1" alt="Logo" ></a>
+            <p>O objectivo da nossa loja virtual é ser um ágil instrumento para compra e/ou venda de produtos e/ou serviços, realizados por meio de ambiente digital (internet), e uma das bases do comércio da atualidade</p>
         </div>
-     </footer>
+        <div class="links-footer">
+            <h3>Links Úteis</h3>
+            <ul>
+                <a href="#" target="_blank"><li>Cupons</li></a>
+                <a href="https://alexandreamaral27.github.io/project-Blog-Pessoal/index.html" target="_blank"><li>Blog.Pessoal</li></a>
+                <a href="#" target="_blank"><li>Politicas</li></a>
+                <a href="#" target="_blank"><li>Torne-se Afilhado</li></a>
+            </ul>
+        </div>
+    
+      </div>
+      <hr class="page-inner-content">
+      <div class="page-inner-content copyright">
+        <p>Copyright 2025 - Alexandre Amaral - todos direitos reservados</p>
+      </div>
+   </footer>
 
 
 
@@ -245,5 +259,17 @@
             toggleCart();
         }
     </script>
+
+<!-- menu -->
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    menu.classList.toggle("show");
+  });
+</script>
+<!-- menu -->
 </body>
 </html>

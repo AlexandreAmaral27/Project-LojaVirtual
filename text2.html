@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"><title>Loja Virtual + Extras</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    :root{--bg:#f5f5f5;--text:#333;--box:#fff}
+    body.dark{--bg:#1e1e1e;--text:#f5f5f5;--box:#2b2b2b}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
+    body{background:var(--bg);color:var(--text);padding:20px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+    .toggle, .cart-icon, .history-btn{cursor:pointer;padding:8px 12px;background:var(--box);border-radius:5px;margin-left:5px}
+    .cart-icon span{background:red;color:#fff;font-size:12px;padding:2px 6px;border-radius:50%;position:relative;top:-5px;left:-5px}
+    .produtos{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+    .produto{background:var(--box);border:1px solid #ccc;padding:12px;width:180px;text-align:center;border-radius:8px}
+    .produto button{background:#28a745;color:#fff;border:none;padding:8px;border-radius:5px;cursor:pointer}
+    .cart-container, .history-panel{display:none;position:fixed;top:80px;right:20px;width:360px;background:var(--box);padding:20px;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.2);max-height:80vh;overflow:auto;z-index:999}
+    .cart-container.show, .history-panel.show{display:block}
+    .cart-container h2, .history-panel h2{margin-bottom:12px}
+    #cart-items li, .history-item{list-style:none;border-bottom:1px solid #ccc;padding:6px 0;margin-bottom:6px}
+    .remove-btn, .clear-btn{background:red;color:white;border:none;padding:5px 8px;border-radius:4px;cursor:pointer}
+    .checkout-btn, .whatsapp-btn, .api-btn{background:#007bff;color:#fff;border:none;padding:10px;border-radius:5px;width:100%;cursor:pointer;margin-top:8px}
+    .checkout-btn:hover{background:#0056b3}
+    .toast{position:fixed;bottom:20px;right:20px;padding:12px 18px;background:#333;color:#fff;border-radius:6px;opacity:0;transition:opacity .3s}
+    .toast.show{opacity:1}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Loja Virtual + Extras</h1>
+  <div>
+    <span class="toggle" onclick="toggleDarkMode()">🌙 Modo</span>
+    <span class="history-btn" onclick="toggleHistory()">📦 Histórico</span>
+    <span class="cart-icon" onclick="toggleCart()">Carrinho <span id="cart-count">0</span></span>
+  </div>
+</header>
+
+<section class="produtos">
+  <div class="produto"><p>Camisa<br>25.000 Kzs</p><button onclick="addToCart('Camisa',25000)">Adicionar</button></div>
+  <div class="produto"><p>Tênis<br>50.000 Kzs</p><button onclick="addToCart('Tênis',50000)">Adicionar</button></div>
+  <div class="produto"><p>Relógio<br>80.000 Kzs</p><button onclick="addToCart('Relógio',80000)">Adicionar</button></div>
+</section>
+
+<div class="cart-container" id="cart-container">
+  <h2>Seu Carrinho</h2><ul id="cart-items"></ul><p id="cart-total">Total: 0 Kzs</p>
+  <button class="checkout-btn" onclick="checkout()">Finalizar</button>
+  <button class="whatsapp-btn" onclick="sendWhatsApp()">Enviar WhatsApp</button>
+  <button class="api-btn" onclick="apiPayment()">Pagar via API</button>
+  <button class="clear-btn" onclick="limparCarrinho()">Limpar Carrinho</button>
+</div>
+
+<div class="history-panel" id="history-panel">
+  <h2>Histórico de Compras</h2><div id="history-list"></div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart'))||[];
+  let history = JSON.parse(localStorage.getItem('history'))||[];
+
+  function updateCart(){
+    const li = cart.map((i,idx)=>`<li>${i.quantity}× ${i.name} = ${(i.quantity*i.price).toLocaleString()} Kzs
+      <button class="remove-btn" onclick="removeFromCart(${idx})">X</button></li>`).join('');
+    document.getElementById('cart-items').innerHTML = li;
+    const total = cart.reduce((s,i)=>s+i.price*i.quantity,0);
+    document.getElementById('cart-total').innerText = `Total: ${total.toLocaleString()} Kzs`;
+    document.getElementById('cart-count').innerText = cart.reduce((s,i)=>s+i.quantity,0);
+    localStorage.setItem('cart',JSON.stringify(cart));
+  }
+
+  function addToCart(name,price){
+    const item=cart.find(i=>i.name===name);
+    item?item.quantity++:cart.push({name,price,quantity:1});
+    showToast(`${name} adicionado.`);
+    updateCart();
+  }
+
+  function removeFromCart(idx){
+    showToast(`${cart[idx].name} removido.`);
+    cart.splice(idx,1); updateCart();
+  }
+
+  function limparCarrinho(){
+    if(confirm('Limpar carrinho?')){cart=[];updateCart();showToast('Carrinho limpo');}
+  }
+
+  function checkout(){
+    const total=cart.reduce((s,i)=>s+i.price*i.quantity,0);
+    if(cart.length===0){showToast('Carrinho vazio');return;}
+    if(total<50000){showToast('Compra mínima de 50.000 Kzs');return;}
+    const date=new Date().toLocaleString();
+    history.unshift({date,items:[...cart],total});
+    localStorage.setItem('history',JSON.stringify(history));
+    alert(`Compra finalizada!\nTotal: ${total.toLocaleString()} Kzs`);
+    cart=[];updateCart();toggleCart();
+  }
+
+  function sendWhatsApp(){
+    if(cart.length===0){showToast('Carrinho vazio');return;}
+    const text=encodeURIComponent(
+      `Resumo da compra:\n${cart.map(i=>`${i.quantity}×${i.name}=${(i.quantity*i.price).toLocaleString()}Kzs`).join('\n')}
+Total: ${cart.reduce((s,i)=>s+i.price*i.quantity,0).toLocaleString()} Kzs`
+    );
+    window.open(`https://api.whatsapp.com/send?phone=&text=${text}`,'_blank');
+  }
+
+  function apiPayment(){
+    if(cart.length===0){showToast('Carrinho vazio');return;}
+    fetch('https://httpbin.org/post',{method:'POST',body:JSON.stringify({cart, total:cart.reduce((s,i)=>s+i.price*i.quantity,0)})})
+    .then(r=>r.json()).then(d=>{
+      showToast('Pagamento simulado OK');
+      console.log('Resposta API:',d);
+    }).catch(e=>showToast('Erro no pagamento'));
+  }
+
+  function toggleCart(){
+    document.getElementById('cart-container').classList.toggle('show');
+  }
+
+  function toggleHistory(){
+    const panel=document.getElementById('history-panel');
+    panel.classList.toggle('show');
+    if(panel.classList.contains('show')) renderHistory();
+  }
+
+  function renderHistory(){
+    const out=history.map(o=>`<div class="history-item"><strong>${o.date}</strong><ul>${o.items.map(i=>`<li>${i.quantity}×${i.name} = ${(i.quantity*i.price).toLocaleString()}Kzs</li>`).join('')}</ul><p>Total: ${o.total.toLocaleString()} Kzs</p></div>`).join('');
+    document.getElementById('history-list').innerHTML = out || '<p>Sem histórico</p>';
+  }
+
+  function toggleDarkMode(){document.body.classList.toggle('dark');}
+
+  function showToast(msg){
+    const t=document.getElementById('toast');
+    t.innerText=msg; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  }
+
+  updateCart();
+</script>
+
+</body>
+</html>

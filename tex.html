@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loja Virtual - Carrinho Avançado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .cart-icon {
+      font-size: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cart-icon span {
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      position: absolute;
+      top: -10px;
+      right: -15px;
+      animation: bounce 0.4s ease;
+    }
+
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    .produtos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .produto {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      width: 200px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .produto:hover {
+      transform: scale(1.03);
+    }
+
+    .produto img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .produto p {
+      margin: 10px 0;
+    }
+
+    .produto button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .cart-container {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 350px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      max-height: 90vh;
+      overflow-y: auto;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .cart-container.show {
+      display: block;
+    }
+
+    .cart-container h2 {
+      margin-bottom: 15px;
+    }
+
+    #cart-items li {
+      list-style: none;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 3px 7px;
+      border-radius: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .total {
+      margin: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .cart-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .checkout-btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .clear-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    /* Toasts */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #333;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      opacity: 0;
+      animation: fadeInOut 3s ease-in-out;
+      z-index: 1000;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(20px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(20px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛍 Loja Virtual</h1>
+    <div class="cart-icon" onclick="toggleCart()">Carrinho <span id="cart-count">0</span></div>
+  </header>
+
+  <section class="produtos">
+    <div class="produto">
+      <img src="https://via.placeholder.com/200x150" />
+      <p>Camisa</p>
+      <p>Preço: 25.000 Kzs</p>
+      <button onclick="addToCart('Camisa', 25000)">Adicionar</button>
+    </div>
+
+    <div class="produto">
+      <img src="https://via.placeholder.com/200x150" />
+      <p>Relógio</p>
+      <p>Preço: 80.000 Kzs</p>
+      <button onclick="addToCart('Relógio', 80000)">Adicionar</button>
+    </div>
+  </section>
+
+  <div class="cart-container" id="cart-container">
+    <h2>Seu Carrinho</h2>
+    <ul id="cart-items"></ul>
+    <p class="total" id="cart-total-line">Total: 0 Kzs</p>
+    <button class="checkout-btn" onclick="checkout()">Finalizar Compra</button>
+    <button class="clear-btn" onclick="limparCarrinho()">Limpar Carrinho</button>
+    <p id="session-timer" style="margin-top: 10px; font-size: 14px; color: #777;"></p>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let sessionTimeout;
+    let sessionTimeLeft = 15 * 60; // 15 min
+
+    function showToast(msg) {
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.innerText = msg;
+      document.getElementById("toast-container").appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById("cart-items");
+      const cartCount = document.getElementById("cart-count");
+      const cartTotalLine = document.getElementById("cart-total-line");
+
+      cartItems.innerHTML = "";
+      let total = 0;
+      let count = 0;
+
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${item.name} - ${item.quantity} x ${item.price.toLocaleString()} Kzs =
+          <strong>${(item.quantity * item.price).toLocaleString()} Kzs</strong>
+          <button class="remove-btn" onclick="removeFromCart(${index})">X</button>
+        `;
+        cartItems.appendChild(li);
+        total += item.price * item.quantity;
+        count += item.quantity;
+      });
+
+      cartCount.innerText = count;
+      cartTotalLine.innerText = `Total: ${total.toLocaleString()} Kzs`;
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function addToCart(name, price) {
+      const existing = cart.find(i => i.name === name);
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      updateCart();
+      showToast(`${name} adicionado ao carrinho`);
+      resetSessionTimer();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+      resetSessionTimer();
+    }
+
+    function limparCarrinho() {
+      if (confirm("Deseja limpar o carrinho?")) {
+        cart = [];
+        updateCart();
+        localStorage.removeItem("cart");
+        showToast("Carrinho limpo");
+      }
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+      }
+      let resumo = "Compra finalizada:\n";
+      let total = 0;
+      cart.forEach(item => {
+        resumo += `${item.quantity}x ${item.name} = ${(item.quantity * item.price).toLocaleString()} Kzs\n`;
+        total += item.quantity * item.price;
+      });
+      resumo += `Total: ${total.toLocaleString()} Kzs`;
+      alert(resumo);
+      limparCarrinho();
+      toggleCart();
+    }
+
+    function toggleCart() {
+      document.getElementById("cart-container").classList.toggle("show");
+      resetSessionTimer();
+    }
+
+    function resetSessionTimer() {
+      clearInterval(sessionTimeout);
+      sessionTimeLeft = 15 * 60;
+      updateTimer();
+      sessionTimeout = setInterval(() => {
+        sessionTimeLeft--;
+        updateTimer();
+        if (sessionTimeLeft <= 0) {
+          clearInterval(sessionTimeout);
+          cart = [];
+          updateCart();
+          localStorage.removeItem("cart");
+          document.getElementById("cart-container").classList.remove("show");
+          showToast("Sessão expirada! Carrinho limpo.");
+        }
+      }, 1000);
+    }
+
+    function updateTimer() {
+      const min = Math.floor(sessionTimeLeft / 60);
+      const sec = sessionTimeLeft % 60;
+      document.getElementById("session-timer").innerText = `Sessão expira em: ${min}m ${sec}s`;
+    }
+
+    // Init
+    updateCart();
+    if (cart.length > 0) resetSessionTimer();
+  </script>
+</body>
+</html>
