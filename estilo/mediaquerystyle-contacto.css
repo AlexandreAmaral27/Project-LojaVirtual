@@ -10,6 +10,24 @@
         background-size: cover;
     }
 
+    .conteiner-como-contactar{
+    
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 400px;
+    background-color: #3b3a3a;
+    text-align: center;
+    padding-top: 50px;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
     .conteiner-como-contactar01{
     
     margin-top: 2%;
@@ -17,7 +35,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-    height: 500px;
+    height: 450px;
     background-color: #3b3a3a;
     text-align: center;
     padding-top: 50px;
@@ -27,5 +45,23 @@
     justify-content: start;
     align-items: center;
 }
- 
+.conteiner-como-contactar02{
+    
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 400px;
+    background-color: #3b3a3a;
+    text-align: center;
+    padding-top: 50px;
+    line-height: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: start;
+}
+
 }
