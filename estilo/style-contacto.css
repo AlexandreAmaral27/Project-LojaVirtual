@@ -50,6 +50,7 @@ html main{
     background-color: #3b3a3a;
     text-align: center;
     padding-top: 50px;
+    line-height: 40px;
 
 
 }
@@ -91,6 +92,12 @@ html main{
     background-color: #3b3a3a;
     text-align: center;
     padding-top: 50px;
+    line-height: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .conteiner-como-contactar01 img{
