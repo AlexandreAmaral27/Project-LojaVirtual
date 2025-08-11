@@ -53,7 +53,9 @@ input {
     font-size: 16px;
     outline: none;
 }
-
+input::placeholder{
+    color: white;
+}
 .toggle-password {
     position: absolute;
     right: 10px;
