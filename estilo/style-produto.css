@@ -21,7 +21,7 @@
     .cart-container {
       display: none;
       position: fixed;
-      top: 80px;
+      top: 93px;
       right: 20px;
       width: 350px;
       background-color: white;
@@ -29,9 +29,12 @@
       border-radius: 10px;
       box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
       z-index: 999;
-      max-height: 90vh;
-      overflow-y: auto;
       transition: all 0.3s ease-in-out;
+    }
+    .cart-container ul{
+       
+    max-height: 50vh;
+    overflow-y: auto;
     }
 
     .cart-container.show {
