@@ -35,11 +35,25 @@
     }
 
     .cart-container.show {
-      display: block;
+      display: flex;
+      flex-direction: column;
       animation: fadeIn 0.3s ease;
+      
     }
 
+     .whatsapp-float button{
+      color: white;
+      margin-top: 8px;
+      width: 100%;
+      height: 34px;
+      background: rgb(18, 138, 18);
+      border-radius: 6px;
+      border: none;
      
+        } 
+        .whatsapp-float button:hover{
+            background-color:rgb(7, 82, 7) ;
+        }
 
 
 .produto {
