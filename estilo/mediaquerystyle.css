@@ -89,7 +89,7 @@
      }
      .exclusive img{
         margin-bottom: 4rem;
-        max-width: 300px;
+        min-width: 300px;
      }
      
     .testemunhos{
