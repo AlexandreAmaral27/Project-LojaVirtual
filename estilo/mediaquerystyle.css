@@ -89,8 +89,9 @@
      }
      .exclusive img{
         margin-bottom: 4rem;
+        max-width: 300px;
      }
-
+     
     .testemunhos{
         flex-direction: column;
      }
@@ -116,12 +117,12 @@
      }
  }
 
-/*   
-@media (max-width:490px){
+ 
+@media (max-width:800px){
 
    .cols{
    display: flex;
    flex-direction: column;
 
    }
-} */
+} 
