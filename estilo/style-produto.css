@@ -57,7 +57,14 @@
         .whatsapp-float button:hover{
             background-color:rgb(7, 82, 7) ;
         }
-
+        .btn2{
+            width: 100%;
+            background-color:#000000b8;
+        }
+        .btn2:hover{
+        background-color:#595959;
+       
+        }
 
 .produto {
     background: white;
