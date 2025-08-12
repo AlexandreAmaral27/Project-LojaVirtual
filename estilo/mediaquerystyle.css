@@ -118,11 +118,3 @@
  }
 
  
-@media (max-width:800px){
-
-   .cols{
-   display: flex;
-   flex-flow: row wrap;
-
-   }
-} 
