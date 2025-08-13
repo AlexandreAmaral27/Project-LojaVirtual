@@ -1,8 +1,5 @@
 @charset "UTF8";
 
-
-
-
 .d-flex{
         
         padding: 1rem;
@@ -24,7 +21,7 @@
       top: 93px;
       right: 20px;
       width: 350px;
-      background-color: white;
+      background-color:#0D1B2A ;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
@@ -43,6 +40,34 @@
       animation: fadeIn 0.3s ease;
       
     }
+    .cart-container h2{
+         padding: 6px;
+         text-align:center ;
+         font-size: 1.6rem;
+         border-radius: 10px;
+         background-color: #2196F3;
+         color:white;
+    }
+    .cart-container ul{
+    background-color: #484646;
+    color: white;
+    padding: 10px;
+    line-height: 34px;
+    border: solid 1px #1E90FF;
+  
+    }
+    .cart-container ul li{
+    background-color:#0D1B2A ;
+    padding: 10px;
+    margin-bottom: 5%;
+    border: solid 1px #1E90FF;
+    }
+    .cart-container strong{
+        color: #4DD0E1;
+    }
+   .total{
+    color: white;
+   }
 
      .whatsapp-float button{
       color: white;
