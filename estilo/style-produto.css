@@ -9,10 +9,7 @@
     scrollbar-width: none; /* remove a barra */
 }
 
-/* Para manter o conteúdo rolável */
-html, body {
-    overflow: auto;
-}
+
 
 .d-flex{
         
