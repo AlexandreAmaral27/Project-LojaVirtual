@@ -18,8 +18,7 @@
     <!-- CHART.JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <style>
-      
+     <style>
         .navbar-custom {
             background-color: #2b2b2b;
             padding: 1rem;
@@ -35,7 +34,69 @@
             align-items: center;
             justify-content: space-between;
         }
+        .preço{
+            
+        }
+        .color-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .color-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.2s;
+        }
+        .color-btn:hover {
+            transform: scale(1.2);
+        }
        
+        .estado-options, .armazenamento-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        .estado-options label, 
+        .armazenamento-options label {
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .quantidade-container {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .quantidade-container button {
+            width: 35px;
+            height: 35px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .stock-status {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .in-stock {
+            color: green;
+        }
+        .out-stock {
+            color: red;
+        }
+        .add-to-cart {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
     </style>
     
 </head>
@@ -67,13 +128,13 @@
         </div>
 
         <!-- HEADER -->
-        <div class="d-flex justify-content-between align-items-center mb-4">
+         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Compras</h2>
             <div class="d-flex gap-2 align-items-center">
                 <button onclick="mostrarHistorico()" class="btn btn-secondary"><i class="fas fa-history"></i> Histórico</button>
                 <button onclick="toggleCart()" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i> 🛒 <span id="cart-count" class="badge bg-danger">0</span></button>
             </div>
-        </div>
+        </div> 
     </div>
 
             <!-- CARRINHO -->
@@ -113,95 +174,80 @@
         </div>
 
        <div class="produto-container" id="product-list">
-            <div class="produto" data-category="computadores">
-                <img src="images/products/PCs/dell/product-1.png" alt="Produto 1" width="260px">
-                <p>Computador</p>
-                <p class="preço">400.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
-            </div>
-            <div class="produto" data-category="computadores">
-                <img src="images/products/PCs/dell/product-2.png" alt="Produto 2" width="260px">
-                <p>Computador Dell</p>
-                <p class="preço">270.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
-            </div>
-            <div class="produto" data-category="computadores">
-                <img src="images/products/PCs/dell/product-3.png" alt="Produto 3" width="260px">
-                <p>Computador Dell 2</p>
-                <p class="preço">305.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
-            </div>
-            <div class="produto" data-category="games">
-                <img src="images/products/product-4.png" alt="Produto 4" width="260px">
-                <p>conjunto gamer</p>
-                <p class="preço">100.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Smartwatch', 100000)">Adicionar</button>
-            </div>
-
-            <div class="produto" data-category="eletronicos">
-                <img src="images/products/product-5.png" alt="Produto 1" width="260px">
-                <p>Fone Bluetooth</p>
+        
+             <div class="produto " data-category="telefones">
+                <img src="images/products/telephones/Iphones/iphone 14/vermelho.png" alt="Produto 1" width="260px">
+                <p>iphone 14</p>
                 <p class="preço">54.000<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
             </div>
-            <div class="produto" data-category="games">
-                <img src="images/products/product-6.png" alt="Produto 2" width="260px">
-                <p>Controle Play 5</p>
-                <p class="preço">70.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
-            </div>
-            <div class="produto" data-category="games">
-                <img src="images/products/product-7.png" alt="Produto 3" width="260px">
-                <p>Cadeira gamer</p>
-                <p class="preço">150.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
-            </div>
-            <div class="produto" data-category="telefones">
-                <img src="images/products/product-8.png" alt="Produto 4" width="260px">
-                <p>Iphone 14 pro max</p>
-                <p class="preço">900.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Smartwatch', 100000)">Adicionar</button>
+
+             <div class="produto" data-category="telefones">
+                <img src="images/products/telephones/Iphones/iphone 14 pro/preto.png" alt="Produto 1" width="260px">
+                <p>iphone 14 pro </p>
+                <p class="preço">54.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
             </div>
 
             <div class="produto" data-category="telefones">
-                <img src="images/products/product-9.png" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 14 pro max/dourado.png" alt="Produto 1" width="260px">
+                <p>iphone 14 pro max</p>
+                <p class="preço">54.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="telefones">
+                <img src="images/products/telephones/Iphones/iphone 15/rosa.png" alt="Produto 2" width="260px">
+                <p>Iphone 15</p>
+                <p class="preço">70.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
+            </div>
+            <div class="produto" data-category="telefones">
+                <img src="images/products/telephones/Iphones/iphone 15 pro/pratiado.png" alt="Produto 3" width="260px">
+                <p>Iphone 15 pro</p>
+                <p class="preço">150.000<span>Kzs</span></p>
+                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
+            </div>
+          
+
+            <div class="produto" data-category="telefones">
+                <img src="images/products/telephones/samsung/product-9.png" alt="Produto 1" width="260px">
                 <p>Samsung Galaxi S23 Ultra</p>
                 <p class="preço">954.000<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
             </div>
             <div class="produto" data-category="games">
-                <img src="images/products/product-10.png" alt="Produto 2" width="260px">
+                <img src="images/products/games/product-13.png" alt="Produto 2" width="260px">
                 <p>Controle Xbox</p>
                 <p class="preço">70.000<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
             </div>
             <div class="produto" data-category="telefones">
-                <img src="images/products/product-11.png" alt="Produto 3" width="260px">
+                <img src="images/products/telephones/outros/product-11.png" alt="Produto 3" width="260px">
                 <p>Xiaomi</p>
                 <p class="preço">425.000<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
             </div>
             <div class="produto" data-category="games">
-                <img src="images/products/product-12.png" alt="Produto 4" width="260px">
+                <img src="images/products/games/x box/product-12.png" alt="Produto 4" width="260px">
                 <p>Xbox</p>
                 <p class="preço">600.000<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Smartwatch', 100000)">Adicionar</button>
             </div>
 
             <div class="produto" data-category="eletronicos">
-                <img src="images/products/product-13.png" alt="Produto 1" width="260px">
+                <img src="images/products/acessorios/product-5.png" alt="Produto 1" width="260px">
                 <p>Fone Bluetooth</p>
                 <p class="preço">54.000<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
             </div>
             <div class="produto" data-category="games">
-                <img src="images/products/product-14.png" alt="Produto 2" width="260px">
+                <img src="images/products/games/play 5/product-14.png" alt="Produto 2" width="260px">
                 <p>Play 5</p>
                 <p class="preço">700.000<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
             </div>
             <div class="produto" data-category="computadores">
-                <img src="images/products/product-15.png" alt="Produto 3" width="260px">
+                <img src="images/products/PCs/mesa/product-15.png" alt="Produto 3" width="260px">
                 <p>PC Gamer</p>
                 <p class="preço">900.000<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
@@ -223,7 +269,7 @@
                 </div>
             </div>
             <div class="logo-footer">
-                <a href="index.html"><img src="images/logos/logo.png" alt="Logo" class="logo-footer1"></a>
+                <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo-footer1"></a>
                 <p>O objetivo da nossa loja virtual é ser um ágil instrumento para compra e venda de produtos e serviços...</p>
             </div>
             <div class="links-footer">
