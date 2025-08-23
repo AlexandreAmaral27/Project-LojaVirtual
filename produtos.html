@@ -128,13 +128,13 @@
         </div>
 
         <!-- HEADER -->
-         <div class="d-flex justify-content-between align-items-center mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Compras</h2>
             <div class="d-flex gap-2 align-items-center">
                 <button onclick="mostrarHistorico()" class="btn btn-secondary"><i class="fas fa-history"></i> Histórico</button>
                 <button onclick="toggleCart()" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i> 🛒 <span id="cart-count" class="badge bg-danger">0</span></button>
             </div>
-        </div> 
+        </div>  
     </div>
 
             <!-- CARRINHO -->
@@ -174,38 +174,40 @@
         </div>
 
        <div class="produto-container" id="product-list">
-        
-             <div class="produto " data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 14/vermelho.png" alt="Produto 1" width="260px">
-                <p>iphone 14</p>
-                <p class="preço">54.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
-            </div>
+        <a class="inf-produto" href="inside.html">
+            
+                 <div class="produto " data-category="telefones">
+                    <img src="images/products/telephones/Iphones/iphone 14/vermelho.png" alt="Produto 1" width="260px">
+                    <p>iphone 14</p>
+                    <p class="preço">54.000<span>Kzs</span></p>
+                    <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button> 
+                </div>
+        </a>
 
              <div class="produto" data-category="telefones">
                 <img src="images/products/telephones/Iphones/iphone 14 pro/preto.png" alt="Produto 1" width="260px">
                 <p>iphone 14 pro </p>
                 <p class="preço">54.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button> 
             </div>
 
             <div class="produto" data-category="telefones">
                 <img src="images/products/telephones/Iphones/iphone 14 pro max/dourado.png" alt="Produto 1" width="260px">
                 <p>iphone 14 pro max</p>
                 <p class="preço">54.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button> 
             </div>
-            <div class="produto" data-category="telefones">
+             <div class="produto" data-category="telefones">
                 <img src="images/products/telephones/Iphones/iphone 15/rosa.png" alt="Produto 2" width="260px">
                 <p>Iphone 15</p>
                 <p class="preço">70.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button> 
             </div>
             <div class="produto" data-category="telefones">
                 <img src="images/products/telephones/Iphones/iphone 15 pro/pratiado.png" alt="Produto 3" width="260px">
                 <p>Iphone 15 pro</p>
                 <p class="preço">150.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button> 
             </div>
           
 
@@ -213,44 +215,33 @@
                 <img src="images/products/telephones/samsung/product-9.png" alt="Produto 1" width="260px">
                 <p>Samsung Galaxi S23 Ultra</p>
                 <p class="preço">954.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button> 
             </div>
             <div class="produto" data-category="games">
                 <img src="images/products/games/product-13.png" alt="Produto 2" width="260px">
                 <p>Controle Xbox</p>
                 <p class="preço">70.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button> 
             </div>
-            <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/outros/product-11.png" alt="Produto 3" width="260px">
-                <p>Xiaomi</p>
-                <p class="preço">425.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
-            </div>
+           
             <div class="produto" data-category="games">
                 <img src="images/products/games/x box/product-12.png" alt="Produto 4" width="260px">
                 <p>Xbox</p>
                 <p class="preço">600.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Smartwatch', 100000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Smartwatch', 100000)">Adicionar</button> 
             </div>
 
-            <div class="produto" data-category="eletronicos">
-                <img src="images/products/acessorios/product-5.png" alt="Produto 1" width="260px">
-                <p>Fone Bluetooth</p>
-                <p class="preço">54.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
-            </div>
             <div class="produto" data-category="games">
                 <img src="images/products/games/play 5/product-14.png" alt="Produto 2" width="260px">
                 <p>Play 5</p>
                 <p class="preço">700.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Controle Xbox', 70000)">Adicionar</button> 
             </div>
             <div class="produto" data-category="computadores">
-                <img src="images/products/PCs/mesa/product-15.png" alt="Produto 3" width="260px">
+                <img src="images/products/games/pc-gamer/product-15.png" alt="Produto 3" width="260px">
                 <p>PC Gamer</p>
                 <p class="preço">900.000<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button>
+                <button class="add-to-cart" onclick="addToCart('Carregador Rápido', 25000)">Adicionar</button> 
             </div>
            
             

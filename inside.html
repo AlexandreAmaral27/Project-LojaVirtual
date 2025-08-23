@@ -19,6 +19,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
+       main h2{
+     background-color:#007BFF;
+    width: 142px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 9px;
+    color: white;
+        }
         .navbar-custom {
             background-color: #2b2b2b;
             padding: 1rem;
@@ -33,9 +41,7 @@
             align-items: center;
             justify-content: space-between;
         }
-        .preço{
-            
-        }
+
         .color-options {
             display: flex;
             gap: 10px;
@@ -53,10 +59,16 @@
         .color-btn:hover {
             transform: scale(1.2);
         }
+
         .produto img {
             margin: auto;
             width: 430px;
+            transition: transform 0.3s ease-in-out;
+            cursor: zoom-in;
         }
+        
+
+
         .estado-options, .armazenamento-options {
             display: flex;
             gap: 15px;
@@ -90,25 +102,103 @@
             color: red;
         }
         .add-to-cart {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 10px;
-}
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        /* 🔎 Miniaturas */
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .thumbnails img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: transform 0.3s, border 0.3s;
+        }
+        .thumbnails img:hover {
+            transform: scale(1.2);
+            border: 2px solid #007BFF;
+        }
     </style>
 </head>
 
 <body>
-    
+
+      
+    <div class="navbar-custom">
+        <div class="navbar-content">
+            <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo"></a>
+            <nav>
+                <ul class="show menu" id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contacto-nos.html">Contato</a></li>
+                    <li><a href="conta.html">Conta</a></li>
+                </ul>
+            </nav>
+            <div class="navicon">
+                <a href="produtos.html"><img src="images/logos/cart.png"></a>
+                <div class="navicon2">
+                    <div class="hamburger" id="hamburger">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HEADER -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Compras</h2>
+            <div class="d-flex gap-2 align-items-center">
+                <button onclick="mostrarHistorico()" class="btn btn-secondary"><i class="fas fa-history"></i> Histórico</button>
+                <button onclick="toggleCart()" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i> 🛒 <span id="cart-count" class="badge bg-danger">0</span></button>
+            </div>
+        </div>  
+    </div>
+
+            <!-- CARRINHO -->
+        <div class="cart-container" id="cart-container">
+            <h2>Seu Carrinho</h2>
+            <ul id="cart-items" class="list-unstyled"></ul>
+            <p class="total fw-bold" id="cart-total-line">Total: 0 Kzs</p>
+            <button class="checkout-btn btn btn-primary mb-2" onclick="checkout()">Finalizar Compra</button>
+            <button class="clear-btn btn btn-danger" onclick="limparCarrinho()">Limpar Carrinho</button>
+
+             <a class="whatsapp-float" href="https://wa.me/244929764090?text=Olá%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank"><button>Enviar Comprovativo</button></a> 
+            <p class="mt-2 small text-muted"  id="session-timer"></p>
+            <button onclick="toggleCart()" class="btn btn2 btn-secondary">Fechar</button>
+        </div>
+
+        <!-- HISTÓRICO -->
+        <div class="cart-container" id="historico-container" style="display: none;">
+            <h2>Histórico de Compras</h2>
+            <ul id="historico-list" class="mb-3 "></ul>
+            <!-- <canvas id="graficoHistorico" height="200"></canvas> -->
+            <button onclick="fecharHistorico()" class="btn btn2 btn-secondary mt-3">Fechar</button>
+        </div>
 
     <main>
+        <a href="produtos.html">
+            <h2>Voltar</h2>
+        </a>
         <div class="produto-container" id="product-list">
             <div class="produto" data-category="telefones">
-                <img id="product-image" src="images/products/telephones/Iphones/iphone 14/vermelho.png" alt="Produto 1" width="260px">        
+                <img id="product-image" src="images/products/telephones/Iphones/iphone 14/vermelho.png" alt="Produto 1">        
             </div>
 
             <div class="price">
@@ -119,17 +209,10 @@
                 <p><strong>Cor:</strong></p>
                 <div class="color-options">
                     <button class="color-btn" style="background-color:#ff0000; border:1px solid #ccc;" data-img="images/products/telephones/Iphones/iphone 14/vermelho.png"></button>
-
                     <button class="color-btn" style="background-color:#404040; border:1px solid #ccc;" data-img="images/products/telephones/Iphones/iphone 14/Meia-noite.png"></button>
-
                     <button class="color-btn" style="background-color:#b575f5a9;border:1px solid #ccc;" data-img="images/products/telephones/Iphones/iphone 14/Estelar.png"></button>
-
                     <button class="color-btn" style="background-color:#f7ff05; border:1px solid #ccc;" data-img="images/products/telephones/Iphones/iphone 14/amarelo.png"></button>
-
-                    
-
                     <button class="color-btn" style="background-color:#1a59fae8;border:1px solid #ccc;" data-img="images/products/telephones/Iphones/iphone 14/azul.png"></button>
-
                     <button class="color-btn" style="background-color:#9e4de5;border:1px solid #ccc;" data-img="images/products/telephones/Iphones/iphone 14/roxo.png"></button>
                 </div>
 
@@ -164,14 +247,60 @@
                 <button class="add-to-cart" onclick="addToCart('Fone Bluetooth', 54000)">Adicionar</button>
             </div>
         </div>
+
+        <!-- 🔎 Miniaturas com Zoom -->
+        <div class="thumbnails">
+            <img src="images/products/telephones/Iphones/iphone 14/vermelho.png" data-img="images/products/telephones/Iphones/iphone 14/vermelho.png" alt="Vermelho">
+            <img src="images/products/telephones/Iphones/iphone 14/Meia-noite.png" data-img="images/products/telephones/Iphones/iphone 14/Meia-noite.png" alt="Meia-noite">
+            <img src="images/products/telephones/Iphones/iphone 14/Estelar.png" data-img="images/products/telephones/Iphones/iphone 14/Estelar.png" alt="Estelar">
+            <img src="images/products/telephones/Iphones/iphone 14/amarelo.png" data-img="images/products/telephones/Iphones/iphone 14/amarelo.png" alt="Amarelo">
+            <img src="images/products/telephones/Iphones/iphone 14/azul.png" data-img="images/products/telephones/Iphones/iphone 14/azul.png" alt="Azul">
+            <img src="images/products/telephones/Iphones/iphone 14/roxo.png" data-img="images/products/telephones/Iphones/iphone 14/roxo.png" alt="Roxo">
+        </div>
     </main>
 
+      <footer class="gray-background">
+        <div class="page-inner-content footer-content">
+            <div class="download-options">
+                <p>Baixe a nossa aplicação</p>
+                <p>Disponível para Android e iOS</p>
+                <div>
+                    <img src="images/logos/app-store.png" alt="">
+                    <img src="images/logos/play-store.png" alt="">
+                </div>
+            </div>
+            <div class="logo-footer">
+                <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo-footer1"></a>
+                <p>O objetivo da nossa loja virtual é ser um ágil instrumento para compra e venda de produtos e serviços...</p>
+            </div>
+            <div class="links-footer">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <a href="#"><li>Cupons</li></a>
+                    <a href="https://alexandreamaral27.github.io/project-Blog-Pessoal/index.html" target="_blank"><li>Blog Pessoal</li></a>
+                    <a href="#"><li>Políticas</li></a>
+                    <a href="#"><li>Torne-se Afiliado</li></a>
+                </ul>
+            </div>
+        </div>
+        <hr class="page-inner-content">
+        <div class="page-inner-content copyright">
+            <p>Copyright 2025 - Alexandre Amaral - Todos os direitos reservados</p>
+        </div>
+    </footer>
 
-    
     <script>
         // Troca imagem ao clicar em uma cor
         document.querySelectorAll(".color-btn").forEach(btn => {
             btn.addEventListener("click", function() {
+                const newImage = this.getAttribute("data-img");
+                document.getElementById("product-image").src = newImage;
+            });
+        });
+
+        // Troca imagem ao clicar nas miniaturas
+        document.querySelectorAll(".thumbnails img").forEach(img => {
+            img.addEventListener("click", function() {
                 const newImage = this.getAttribute("data-img");
                 document.getElementById("product-image").src = newImage;
             });
@@ -201,7 +330,7 @@
         });
 
         // Stock (exemplo simples)
-        let emStock = true; // muda para false se quiser simular fora de stock
+        let emStock = true; 
         const stockStatus = document.getElementById("stock-status");
         if(emStock){
             stockStatus.textContent = "✅ Em stock";

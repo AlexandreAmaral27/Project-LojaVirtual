@@ -121,6 +121,11 @@
             width: 87%;
             margin: 2% 0 2% 0;
         }
+        
+        .inf-produto{
+            text-decoration: none;
+        }
+       
 
 .produto {
     background: white;
