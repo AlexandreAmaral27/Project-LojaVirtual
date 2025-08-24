@@ -7,6 +7,15 @@
 
 📍 **Acesse online:** [Ⓐ.roy_Store](https://alexandreamaral27.github.io/Project-LojaVirtual/index.html)
 
+**👨‍💻 Autor**
+
+[Alexandre_Amaral](https://alexandreamaral27.github.io/project-Blog-Pessoal/about.html)
+[📧 amaralalexandre327@gmail.com](https://alexandreamaral27.github.io/Project-LojaVirtual/index.html)
+[🌐 Portfólio/Blog](https://alexandreamaral27.github.io/project-Blog-Pessoal/about.html)
+📱 +244 929-764-090
+📍 Luanda – Angola
+
+
 ---
 
 ## 📌 Visão Geral
@@ -47,12 +56,3 @@ Project-LojaVirtual/
 │── README.md           # Documentação
 
 
-##👨‍💻 Autor
-
-Alexandre P. S. Amaral
-📧 amaralalexandre327@gmail.com
-
-🌐 Portfólio/Blog
-
-📱 +244 929-764-090
-📍 Luanda – Angola
