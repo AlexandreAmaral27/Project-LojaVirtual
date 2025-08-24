@@ -1,61 +1,74 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/logos/fav-icon/letra-a.png" type="image/x-icon">
-    <title>A.roy_Store</title>
-    <link rel="stylesheet" href="estilo/style-conta.css">
-    <link rel="stylesheet" href="estilo/style.css">
-    <link rel="stylesheet" href="estilo/mediaquerystyle.css">
-    <link rel="stylesheet" href="estilo/menu.css">
-    <style>
-        .container {
-    text-align: center;
-    max-width: 348px;
-    margin: auto;
-    padding: 20px;
-    background-color: #8f8b8b24;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/logos/fav-icon/letra-a.png" type="image/x-icon">
+  <title>A.roy_Store</title>
+  <link rel="stylesheet" href="estilo/style-conta.css">
+  <link rel="stylesheet" href="estilo/style.css">
+  <link rel="stylesheet" href="estilo/mediaquerystyle.css">
+  <link rel="stylesheet" href="estilo/menu.css">
+  <style>
+    /* Faz o body ocupar a tela toda sem rolagem */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* impede rolagem */
+    }
+
+    .container {
+      position: relative;
+      top: -5%;
+      text-align: center;
+      max-width: 348px;
+      width: 100%;
+      padding: 20px;
+      background-color: #8f8b8b24;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar show-menu">
-        <div class="headerconteiner ">
-            <a href="index.html"><img src="images/a.roy/logo.png" alt=""  class="logo" alt="Logo" ></a>
-    
-            <nav>
-                <ul class="show menu" id="menu">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="produtos.html">Produtos</a></li>
-                  <li><a href="sobre.html">Sobre</a></li>
-                  <li><a href="contacto-nos.html">Conctato</a></li>
-                  <li><a href="conta.html">Conta</a></li>
-                </ul>
-             
-              
-              </nav>
-       
-         
-       <div class="navicon">
+  <!-- NAVBAR -->
+  <div class="navbar show-menu">
+    <div class="headerconteiner">
+      <a href="index.html"><img src="images/a.roy/logo.png" alt="" class="logo"></a>
+      <nav>
+        <ul class="show menu" id="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contacto-nos.html">Contato</a></li>
+          <li><a href="conta.html">Conta</a></li>
+        </ul>
+      </nav>
+      <div class="navicon">
         <a href="produtos.html"><img src="images/logos/cart.png"> </a> 
-          <div class="navicon2">
-            <div class="hamburger" id="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-              <!-- <img src="images/menu.png"> -->
+        <div class="navicon2">
+          <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
-    </div>
-       </div>  
-    </div>
-    <main>
-        <div class="container-conta">
+        </div>
+      </div>
+    </div>  
+  </div>
+
+  <!-- MAIN -->
+  <main>
+      <div class="container-conta">
         
             <div class="container">
         
@@ -109,78 +122,7 @@
             </div>
         <!-- </form> -->
     </div>
-    </main>
-    
-
-    <script>
-        function togglePassword(inputId, icon) {
-            const passwordInput = document.getElementById(inputId);
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.textContent = "🙈"; // Muda o ícone ao revelar senha
-            } else {
-                passwordInput.type = "password";
-                icon.textContent = "👁️"; // Retorna ao estado original
-            }
-        }
-
-        function toggleForms() {
-            document.getElementById("loginForm").classList.toggle("hidden");
-            document.getElementById("registerForm").classList.toggle("hidden");
-        }
-
-        function login() {
-            const email = document.getElementById("loginEmail").value;
-            const password = document.getElementById("loginPassword").value;
-
-            if (email === "" || password === "") {
-                alert("Por favor, preencha todos os campos.");
-                return;
-            }
-
-            alert("Login realizado com sucesso!");
-        }
-
-        function register() {
-            const name = document.getElementById("registerName").value;
-            const email = document.getElementById("registerEmail").value;
-            const password = document.getElementById("registerPassword").value;
-
-            if (name === "" || email === "" || password === "") {
-                alert("Por favor, preencha todos os campos.");
-                return;
-            }
-
-            alert("Cadastro realizado com sucesso!");
-            toggleForms();
-        }
-
-        function openModal() {
-            document.getElementById("forgotPasswordModal").style.display = "flex";
-        }
-
-        function closeModal() {
-            document.getElementById("forgotPasswordModal").style.display = "none";
-        }
-
-        function recoverPassword() {
-            alert("Se um email válido foi digitado, um link de recuperação foi enviado.");
-            closeModal();
-        }
-    </script>
-
-    <!-- menu -->
-    <script>
-      const hamburger = document.getElementById("hamburger");
-      const menu = document.getElementById("menu");
-  
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        menu.classList.toggle("show");
-      });
-    </script>
-<!-- menu -->
-
-      
+    </div>
+  </main>
 </body>
 </html>

@@ -1,6 +1,4 @@
-header{
-    background-color: #333;
-}
+
 .header-bottom-side-left1 p{
     background-color: #ffffff42;
     padding: 10px;
@@ -146,3 +144,108 @@ button:hover {
 .cor-de-fundo{
     padding: 1px;
 }
+
+.page-content-inner{
+      margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height:auto;
+    color: black;
+    background-size: cover;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: start;
+}
+.page-content-inner p{
+    
+}
+.devision{
+ flex-direction: column;
+ 
+    
+}
+.devision h2{
+     text-align: center;
+     margin: 2%;
+}
+.devision p{
+    width: 100%;
+    margin: auto;
+}
+
+.page-itens{
+    display: flex;
+    justify-content: center;
+    padding: 17px;
+    background-image: linear-gradient(top ( #c7c7c7#fff));
+   
+    
+}
+.page-itens h2{
+    text-align: center;
+    margin-bottom: 3%;
+}
+.declarac{
+    flex-basis: 50%;
+    padding: 17px;
+}
+.declarac p{
+    line-height: 20px;
+}
+.conteiner-call-action{
+    width: 100%;
+    height: 500px;
+    background-color: #2c2c2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.inner-call-action{
+    background-color: #333;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: solid 1px rgb(2, 62, 174);
+    
+}
+.call-action{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 25px;
+}
+.call-action h2{
+    text-align: center;
+    margin: 40px;
+}
+.call-action p{
+    padding: 20px;
+
+}
+
+.call-action button{
+   
+    background-color: #0084ff;
+    border: none;
+    width:100%;
+    border-radius: 99999px;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all .2s;
+    
+    
+}
+.call-action button:hover {
+    background-color: #004c94;
+}
+
+ 
+
+
+
+         

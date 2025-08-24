@@ -1,285 +1,401 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="images/logos/fav-icon/letra-a.png" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.roy_Store</title>
-    <link rel="stylesheet" href="estilo/style-sobre.css">
-    <link rel="stylesheet" href="estilo/mediaquerystyle-sobre.css">
-    <link rel="stylesheet" href="estilo/style.css">
-    <link rel="stylesheet" href="estilo/mediaquerystyle.css">
-    <link rel="stylesheet" href="estilo/menu.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A.roy_Store - Produtos de tecnologia, moda e acessórios com qualidade, estilo e preço justo. Envio para Angola e Portugal.">
+  <title>A.roy_Store</title>
+  <link rel="shortcut icon" href="images/logos/fav-icon/letra-a.png" type="image/x-icon">
 
-   
-   
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="estilo/style-sobre.css">
+  <link rel="stylesheet" href="estilo/mediaquerystyle-sobre.css">
+  <link rel="stylesheet" href="estilo/style.css">
+  <link rel="stylesheet" href="estilo/mediaquerystyle.css">
+  <link rel="stylesheet" href="estilo/menu.css">
+
+  <style>
+    .header-bottom-side-right img {
+    width: 80%;
+}
+    /* Gradiente animado */
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .gradient-bg {
+      background: linear-gradient(-90deg,#686666, #2f2e2e, #3b3a3a);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+    }
+
+    /* Sessão sobre */
+    .sobre-loja {
+      padding: 60px 20px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      width: 100%;
+    }
+
+    .container01 {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .bloco {
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .bloco h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .bloco .intro {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      margin-bottom: 40px;
+    }
+
+    /* Grid de cartões */
+    .grid-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 25px;
+      color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .card.visivel {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.7s ease;
+    }
+
+    /* Page content (Missão, Visão, Valores) */
+    .page-content-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      padding: 20px;
+    }
+
+    .card-info {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      border-radius: 24px;
+      padding: 35px;
+      color: #fff;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .card-title {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .card-title::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #0e0bc1, #00c6ff);
+      margin-top: 10px;
+      border-radius: 3px;
+    }
+
+    .card-text, .values-list li {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      color: #f0f0f0;
+    }
+
+    .values-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .values-list li::before {
+      content: "✔";
+      margin-right: 8px;
+      color: #2c76ed;
+    }
+
+    /* Carrossel */
+    .slides {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      text-align: center;
+    }
+
+    .slide img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
-<body>
-     
-    <div class="navbar show-menu">
-        <div class="headerconteiner ">
-            <a href="index.html"><img src="images/a.roy/logo.png" alt=""  class="logo" alt="Logo" ></a>
-    
-            <nav>
-                <ul class="show menu" id="menu">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="produtos.html">Produtos</a></li>
-                  <li><a href="sobre.html">Sobre</a></li>
-                  <li><a href="contacto-nos.html">Conctato</a></li>
-                  <li><a href="conta.html">Conta</a></li>
-                </ul>
-             
-              
-              </nav>
-       
-         
-       <div class="navicon">
-        <a href="produtos.html"><img src="images/logos/cart.png"> </a>
-          <div class="navicon2">
-            <div class="hamburger" id="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-              <!-- <img src="images/menu.png"> -->
-          </div>
-    </div>
-       </div>  
-    </div>
-    <header>
-        <div class="header-inner-conteiner">
-            <div class="header-bottom-side">
-                 <div class="header-bottom-side-left1">
-                        <h2>Historia da Loja</h2>
-                        <p>
-                            A.roy_Store nasceu de um sonho: oferecer produtos de qualidade com um toque especial de carinho e dedicação. Sempre acreditamos que cada detalhe faz a diferença, e foi com essa ideia que decidimos dar o primeiro passo e transformar nossa paixão em um negócio.
-                        </p>
-                        <p>
-                            Começamos pequenos, mas com um grande propósito: proporcionar uma experiência incrível para cada cliente, seja pela escolha cuidadosa dos produtos, pelo atendimento próximo ou pela atenção aos mínimos detalhes.
-                            
-                        </p>
-                        <p>
-                            Ainda estamos no início dessa jornada, mas estamos animados para crescer junto com você! Seja bem-vindo à nossa loja e faça parte da nossa história.
-                        </p>
-                        
-                </div>
-               
-                    
-                       <div class="header-bottom-side-right">
-                        <div class="inner-header-bottom-side-right">
-                    
-                            <img src="images/a.roy/logo.png" alt="">
-                        </div>
-                       </div>
-               
-    
-            </div>
-        </div>
-        </header>
+<body class="gradient-bg">
 
-    <div class="cor-de-fundo">
-        
-            <div class="container">
-                <h2>Destaques</h2>
-                <div class="carousel">
-                    <div class="slides" id="slides">
-                        <div class="slide">
-                            <img src="images/products/PCs/dell/product-1.png" alt="Destaque 1" width="60px" >
-                            <div class="overlay">Pc</div>
-                        </div>
-                        <div class="slide">
-                            <img src="images/products/product-7.png" alt="Destaque 2">
-                            <div class="overlay">Cadeira Game</div>
-                        </div>
-                        <div class="slide">
-                            <img src="images/products/product-8.png" alt="Destaque 3">
-                            <div class="overlay">Iphone 14 Pro Max</div>
-                        </div>
-                        <div class="slide">
-                            <img src="images/products/product-12.png" alt="Destaque 4">
-                            <div class="overlay">X-box</div>
-                        </div>
-                        <div class="slide">
-                            <img src="images/products/product-14.png" alt="Destaque 5">
-                            <div class="overlay">PlayStation 5</div>
+  <!-- Navbar -->
+  <div class="navbar show-menu">
+    <div class="headerconteiner">
+      <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo"></a>
+      <nav>
+        <ul class="show menu" id="menu" aria-expanded="false">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contacto-nos.html">Contato</a></li>
+          <li><a href="conta.html">Conta</a></li>
+        </ul>
+      </nav>
+      <div class="navicon">
+        <a href="produtos.html"><img src="images/logos/cart.png" alt="Carrinho"></a>
+        <div class="navicon2">
+          <div class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+            <div></div><div></div><div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção Sobre -->
+  <section class="sobre-loja">
+    <div class="container01">
+      <div class="header-bottom-side">
+        <div class="header-bottom-side-left1">
+          <h2>Nossa História</h2>
+          <p>A.roy_Store nasceu de um sonho: oferecer produtos de qualidade com carinho e dedicação...</p>
+           <p> Começamos pequenos, mas com um grande propósito: proporcionar uma experiência incrível para cada cliente, seja pela escolha cuidadosa dos produtos, pelo atendimento próximo ou pela atenção aos mínimos detalhes.</p>
+            <p>Ainda estamos no início dessa jornada, mas estamos animados para crescer junto com você! Seja bem-vindo à nossa loja e faça parte da nossa história.</p>
+        </div>
+        <div class="header-bottom-side-right">
+          <img src="images/a.roy/logo.png" alt="Logo A.roy_Store" loading="lazy">
+        </div>
+      </div>
+
+      <!-- O que encontrar -->
+      <div class="bloco">
+        <h2>O que você vai encontrar aqui!</h2>
+        <p class="intro">Na <strong>a.roy_store</strong>, você encontra tecnologia, moda e acessórios pensados para seu dia a dia.</p>
+        <div class="grid-info">
+          <div class="card animado">
+            <h3>💻 Tecnologia & Acessórios</h3>
+            <p>Smartphones, capas, fones, carregadores e gadgets modernos.</p>
+          </div>
+          <div class="card animado">
+            <h3>👕 Moda & Lifestyle</h3>
+            <p>Roupas e acessórios que combinam conforto e estilo.</p>
+          </div>
+          <div class="card animado">
+            <h3>⭐ Produtos Exclusivos</h3>
+            <p>Itens escolhidos com cuidado e preço justo.</p>
+          </div>
+        </div>
+
+        <div class="container">
+                    <h2>Destaques</h2>
+                    <div class="carousel">
+                        <div class="slides" id="slides">
+                            <div class="slide">
+                                <img src="images/products/PCs/dell/product-1.png" alt="Destaque 1" width="60px" >
+                                <div class="overlay">Pc</div>
+                            </div>
+                            <div class="slide">
+                                <img src="images/products/games/cadeira/red.png" alt="Destaque 2">
+                                <div class="overlay">Cadeira Game</div>
+                            </div>
+                            <div class="slide">
+                                <img src="images/products/telephones/Iphones/iphone 14 pro max/dourado.png" alt="Destaque 3">
+                                <div class="overlay">Iphone 14 Pro Max</div>
+                            </div>
+                            <div class="slide">
+                                <img src="images/products/games/x box/product-12.png" alt="Destaque 4">
+                                <div class="overlay">X-box</div>
+                            </div>
+                            <div class="slide">
+                                <img src="images/products/games/play 5/product-14.png" alt="Destaque 5">
+                                <div class="overlay">PlayStation 5</div>
+                            </div>
                         </div>
                     </div>
+                    <div class="buttons">
+                        <button onclick="prevSlide()">&#10094; Previous</button>
+                        <button onclick="nextSlide()">Next &#10095;</button>
+                    </div>
+                    <div class="indicators" id="indicators"></div>
                 </div>
-                <div class="buttons">
-                    <button onclick="prevSlide()">&#10094; Previous</button>
-                    <button onclick="nextSlide()">Next &#10095;</button>
-                </div>
-                <div class="indicators" id="indicators"></div>
-            </div>
-        
+      </div>
     </div>
+  </section>
+   <div class="conteiner-call-action">
+                <div class="call-action">
+                    <h2>Chamada de atenção</h2>
+                    <p>🚀Descubra já nossos produtos e leve qualidade, inovação e estilo para o seu dia a dia, Na a.roy_store, cada detalhe é pensado para você.</p>
+                    <p>Tecnologia e Moda no mesmo clique.</p>
+                    
+                    <a href="produtos.html"><button>comprar Agora</button></a>
+                </div>
+         </div>
 
-    <div>
-        <div class="page-inner-content">
-            <h3 class="selection-titulo">Produtos Selecionados</h3>
-            <div class="subtitulo"></div>
-            <div class="cols cols4">
-                <div class="produto">
-                    <img src="images/products/product-4.png" alt="">
-                    <p class="produto-name">Combo Gamer Meetion</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">54.000<span>Kzs</span></p> 
-                </div>
-                <div class="produto">
-                    <img src="images/products/product-5.png" alt="">
-                    <p class="produto-name">Venturs Xs(cooler)</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">54.000<span>Kzs</span></p> 
-                </div>  
-                <div class="produto">
-                    <img src="images/products/product-6.png" alt="">
-                    <p class="produto-name">Comando de Play 5</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">54.000<span>Kzs</span></p> 
-                </div>  
-                <div class="produto">
-                    <img src="images/products/product-7.png" alt="">
-                    <p class="produto-name">Cadeira Game</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">54.000<span>Kzs</span></p> 
-                </div>
-
-            </div>
-
-        </div>
-         <div class="page-inner-content">
-            <h3 class="selection-titulo">Outros Produtos</h3>
-            <div class="subtitulo"></div>
-            <div class="cols cols4">
-                <div class="produto">
-                    <img src="images/products/product-8.png" alt="">
-                    <p class="produto-name">Iphone 14 Pro Max</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">950.000<span>Kzs</span></p> 
-                </div>
-                <div class="produto">
-                    <img src="images/products/product-9.png" alt="">
-                    <p class="produto-name">Galaxi S23 Ultra</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">900.000<span>Kzs</span></p> 
-                </div>  
-                <div class="produto">
-                    <img src="images/products/product-10.png" alt="">
-                    <p class="produto-name">Combo Gamer Meetion</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">54.000<span>Kzs</span></p> 
-                </div>  
-                <div class="produto">
-                    <img src="images/products/product-11.png" alt="">
-                    <p class="produto-name">Xiaomi 12S Ultra</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">508.000<span>Kzs</span></p> 
-                </div>
-                <div class="produto">
-                    <img src="images/products/product-12.png" alt="">
-                    <p class="produto-name">Xbox Series X</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">600.000<span>Kzs</span></p> 
-                </div>
-                <div class="produto">
-                    <img src="images/products/product-13.png" alt="">
-                    <p class="produto-name">Combo Gamer Meetion</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">54.000<span>Kzs</span></p> 
-                </div>  
-                <div class="produto">
-                    <img src="images/products/product-14.png" alt="">
-                    <p class="produto-name">Play 5</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">600.000<span>Kzs</span></p> 
-                </div>  
-                <div class="produto">
-                    <img src="images/products/product-15.png" alt="">
-                    <p class="produto-name">Pc Gamer</p>
-                    <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="preço">700.000<span>Kzs</span></p> 
-                </div>
-
-            </div>
-            
-
-        </div>
+  <!-- Missão, Visão, Valores -->
+  <div class="page-content-inner">
+    <div class="card-info" style="animation-delay: 0.2s;">
+      <h3 class="card-title">🚀 Missão</h3>
+      <p class="card-text">Oferecer produtos de tecnologia, moda e acessórios que unem qualidade, inovação e estilo.</p>
     </div>
+    <div class="card-info" style="animation-delay: 0.4s;">
+      <h3 class="card-title">✨ Visão</h3>
+      <p class="card-text">Ser referência em Angola e Portugal no setor de tecnologia e moda, reconhecida pela qualidade e confiança.</p>
+    </div>
+    <div class="card-info" style="animation-delay: 0.6s;">
+      <h3 class="card-title">📍 Valores</h3>
+      <ul class="values-list">
+        <li>Qualidade</li>
+        <li>Inovação</li>
+        <li>Confiança</li>
+        <li>Acessibilidade</li>
+        <li>Agilidade</li>
+      </ul>
+    </div>
+  </div>
 
-     <footer class="gray-background">
-        <div class="page-inner-content footer-content">
-            <div class="download-options">
-                <p>Baixe a nossa aplicação</p>
-                <p>Disponível para Android e iOS</p>
-                <div>
-                    <img src="images/logos/app-store.png" alt="">
-                    <img src="images/logos/play-store.png" alt="">
-                </div>
-            </div>
-            <div class="logo-footer">
-                <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo-footer1"></a>
-                <p>O objetivo da nossa loja virtual é ser um ágil instrumento para compra e venda de produtos e serviços...</p>
-            </div>
-            <div class="links-footer">
-                <h3>Links Úteis</h3>
-                <ul>
-                    <a href="#"><li>Cupons</li></a>
-                    <a href="https://alexandreamaral27.github.io/project-Blog-Pessoal/index.html" target="_blank"><li>Blog Pessoal</li></a>
-                    <a href="#"><li>Políticas</li></a>
-                    <a href="#"><li>Torne-se Afiliado</li></a>
-                </ul>
-            </div>
+  <!-- Footer -->
+  <footer class="gray-background">
+    <div class="page-inner-content footer-content">
+      <div class="download-options">
+        <p>Baixe a nossa aplicação</p>
+        <div>
+          <img src="images/logos/app-store.png" alt="App Store" loading="lazy">
+          <img src="images/logos/play-store.png" alt="Play Store" loading="lazy">
         </div>
-        <hr class="page-inner-content">
-        <div class="page-inner-content copyright">
-            <p>Copyright 2025 - Alexandre Amaral - Todos os direitos reservados</p>
-        </div>
-    </footer>
+      </div>
+      <div class="logo-footer">
+        <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo-footer1" loading="lazy"></a>
+        <p>O objetivo da nossa loja virtual é ser um ágil instrumento para compra e venda de produtos e serviços...</p>
+      </div>
+      <div class="links-footer">
+        <h3>Links Úteis</h3>
+        <ul>
+          <li><a href="#">Cupons</a></li>
+          <li><a href="https://alexandreamaral27.github.io/project-Blog-Pessoal/index.html" target="_blank">Blog Pessoal</a></li>
+          <li><a href="#">Políticas</a></li>
+          <li><a href="#">Torne-se Afiliado</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="page-inner-content">
+    <div class="page-inner-content copyright">
+      <p>Copyright 2025 - Alexandre Amaral - Todos os direitos reservados</p>
+    </div>
+  </footer>
 
+  <!-- Scripts -->
+  <script>
+    // Carrossel
+    let index = 0;
+    function showSlide() {
+      const slides = document.getElementById('slides');
+      slides.style.transform = `translateX(${-index * 100}%)`;
+      updateIndicators();
+    }
+    function nextSlide() {
+      const totalSlides = document.querySelectorAll('.slide').length;
+      index = (index + 1) % totalSlides;
+      showSlide();
+    }
+    function prevSlide() {
+      const totalSlides = document.querySelectorAll('.slide').length;
+      index = (index - 1 + totalSlides) % totalSlides;
+      showSlide();
+    }
+    function updateIndicators() {
+      const indicators = document.getElementById('indicators');
+      if (!indicators) return;
+      indicators.innerHTML = '';
+      for (let i = 0; i < document.querySelectorAll('.slide').length; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === index) dot.classList.add('active');
+        dot.onclick = () => { index = i; showSlide(); };
+        indicators.appendChild(dot);
+      }
+    }
+    setInterval(nextSlide, 4000);
+    document.addEventListener('DOMContentLoaded', updateIndicators);
 
-     <script>
-        let index = 0;
-        function showSlide() {
-            const slides = document.getElementById('slides');
-            slides.style.transform = `translateX(${-index * 100}%)`;
-            updateIndicators();
+    // Menu
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      menu.classList.toggle("show");
+      menu.setAttribute("aria-expanded", menu.classList.contains("show"));
+    });
+
+    // Animação de scroll
+    const cards = document.querySelectorAll('.animado');
+    function mostrarAoScroll() {
+      const alturaTela = window.innerHeight * 0.85;
+      cards.forEach(card => {
+        const distanciaTopo = card.getBoundingClientRect().top;
+        if (distanciaTopo < alturaTela) {
+          card.classList.add('visivel');
         }
-        function nextSlide() {
-            const totalSlides = document.querySelectorAll('.slide').length;
-            index = (index + 1) % totalSlides;
-            showSlide();
-        }
-        function prevSlide() {
-            const totalSlides = document.querySelectorAll('.slide').length;
-            index = (index - 1 + totalSlides) % totalSlides;
-            showSlide();
-        }
-        function updateIndicators() {
-            const indicators = document.getElementById('indicators');
-            indicators.innerHTML = '';
-            for (let i = 0; i < document.querySelectorAll('.slide').length; i++) {
-                const dot = document.createElement('span');
-                dot.classList.add('dot');
-                if (i === index) dot.classList.add('active');
-                dot.onclick = () => { index = i; showSlide(); };
-                indicators.appendChild(dot);
-            }
-        }
-        setInterval(nextSlide, 4000); // Troca automática a cada 4 segundos
-        document.addEventListener('DOMContentLoaded', updateIndicators);
-    </script>
-
-
-<!-- menu -->
-<script>
-  const hamburger = document.getElementById("hamburger");
-  const menu = document.getElementById("menu");
-
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    menu.classList.toggle("show");
-  });
-</script>
-<!-- menu -->
+      });
+    }
+    window.addEventListener('scroll', mostrarAoScroll);
+    window.addEventListener('load', mostrarAoScroll);
+  </script>
 </body>
 </html>
