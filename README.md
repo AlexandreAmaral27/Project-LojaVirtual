@@ -9,11 +9,11 @@
 
 **👨‍💻 Autor**
 
-[Alexandre_Amaral](https://alexandreamaral27.github.io/project-Blog-Pessoal/about.html)
-[📧 amaralalexandre327@gmail.com](https://alexandreamaral27.github.io/Project-LojaVirtual/index.html)
-[🌐 Portfólio/Blog](https://alexandreamaral27.github.io/project-Blog-Pessoal/about.html)
-📱 +244 929-764-090
-📍 Luanda – Angola
+[Alexandre_Amaral](https://alexandreamaral27.github.io/project-Blog-Pessoal/about.html) <br>
+[📧 amaralalexandre327@gmail.com](https://alexandreamaral27.github.io/Project-LojaVirtual/index.html)<br>
+[🌐 Portfólio/Blog](https://alexandreamaral27.github.io/project-Blog-Pessoal/about.html)<br>
+📱 +244 929-764-090<br>
+📍 Luanda – Angola<br>
 
 
 ---
