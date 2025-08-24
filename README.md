@@ -47,20 +47,12 @@ Project-LojaVirtual/
 │── README.md           # Documentação
 
 
----
+👨‍💻 Autor
 
+Alexandre P. S. Amaral
+📧 amaralalexandre327@gmail.com
 
-O que acontece:
-- A primeira linha **```bash** abre um bloco de código colorido como se fosse terminal.  
-- O conteúdo dentro é **apenas texto** formatado (não executa nada no GitHub).  
-- A última linha **```** fecha o bloco.  
+🌐 Portfólio/Blog
 
-Isso serve para:  
-✔️ Mostrar a **estrutura de pastas** do seu projeto.  
-✔️ Exibir **comandos** que alguém pode rodar no terminal, por exemplo:
-
-```bash
-git clone https://github.com/alexandreamaral27/Project-LojaVirtual.git
-cd Project-LojaVirtual
-index.html
-
+📱 +244 929-764-090
+📍 Luanda – Angola
