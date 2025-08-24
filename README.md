@@ -1,6 +1,9 @@
 # 🛒 Ⓐ.roy_Store – Loja Virtual
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)  [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)  [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)  [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-181717?logo=github)](https://pages.github.com/)  
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)  
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)  
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)  
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-181717?logo=github)](https://pages.github.com/)  
 
 📍 **Acesse online:** [Ⓐ.roy_Store](https://alexandreamaral27.github.io/Project-LojaVirtual/index.html)
 
@@ -46,4 +49,18 @@ Project-LojaVirtual/
 
 ---
 
-Quer que eu prepare também a versão **em inglês** desse README para deixar seu repositório mais internacional e atrativo para recrutadores estrangeiros?
+
+O que acontece:
+- A primeira linha **```bash** abre um bloco de código colorido como se fosse terminal.  
+- O conteúdo dentro é **apenas texto** formatado (não executa nada no GitHub).  
+- A última linha **```** fecha o bloco.  
+
+Isso serve para:  
+✔️ Mostrar a **estrutura de pastas** do seu projeto.  
+✔️ Exibir **comandos** que alguém pode rodar no terminal, por exemplo:
+
+```bash
+git clone https://github.com/alexandreamaral27/Project-LojaVirtual.git
+cd Project-LojaVirtual
+index.html
+
