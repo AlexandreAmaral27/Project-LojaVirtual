@@ -47,7 +47,7 @@ Project-LojaVirtual/
 │── README.md           # Documentação
 
 
-👨‍💻 Autor
+##👨‍💻 Autor
 
 Alexandre P. S. Amaral
 📧 amaralalexandre327@gmail.com
