@@ -7,8 +7,8 @@
     <title>A.roy_Store</title>
     <link rel="stylesheet" href="estilo/style-produto.css">
     <link rel="stylesheet" href="estilo/style.css">
-    <link rel="stylesheet" href="estilo/menu.css">
     <link rel="stylesheet" href="estilo/mediaquerystyle.css">
+    <link rel="stylesheet" href="estilo/menu.css">
     <link rel="stylesheet" href="estilo/mediaquerystyle-produto.css"> 
 
     <!-- BOOTSTRAP -->
@@ -19,20 +19,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
      <style>
-       .mb-4 {
-    width: 100%;
-    margin-bottom: 1.5rem !important;
-}
-    .headerconteiner {
-    display: flex;
-    justify-content: space-between; /* logo à esquerda, menu no meio, hambúrguer/carrinho à direita */
-    align-items: center;
-    width: 100%;
-    max-width: 1300px; /* se quiser alinhar como no resto */
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
+        .navbar-custom {
+            background-color: #2b2b2b;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            box-shadow: 0px 10px rgba(58, 57, 57, 0.086);
+            z-index: 99;
+        }
+        .navbar-content {
+            max-width: 1300px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         
 nav {
     background-color: #2c2c2c;
@@ -45,57 +46,137 @@ nav {
     align-items: center;
   }
  
+ 
+ 
+  .menu {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+  }
+ 
+  .menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: background 0.3s;
+  }
+ 
+  .menu li a:hover {
+    background-color: #333;
+    border-radius: 5px;
+  }
+ 
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+  }
+ 
+  .hamburger div {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+ 
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+ 
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+ 
+  /* MOBILE */
+  @media (max-width: 800px) {
+    .hamburger {
+      display: flex;
+    }
+ 
+    .menu {
+     
+      display: flex;
+      position: absolute;
+      top: 260%;
+      left: -116px;
+      right: -92px;
+      background-color: #2c2c2c;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      display: none;
+      animation: slideDown 0.3s ease-in-out;
+    }
+ 
+    .menu.show {
+      
+      display: none;
+    }
+    
+   
+  }
+ 
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+       
     </style>
     
 </head>
 
 <body>
     
-   <div class="navbar show-menu">
-    <div class="headerconteiner">
-        <!-- Logo colada no início -->
-        <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo"></a>
-        
-        <!-- Menu central -->
-        <nav>
-            <ul class="show menu" id="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contacto-nos.html">Contato</a></li>
-                <li><a href="conta.html">Conta</a></li>
-            </ul>
-        </nav>
-
-        <!-- Ícones carrinho + hambúrguer no fim -->
-        <div class="navicon">
-            <a href="produtos.html"><img src="images/logos/cart.png"></a>
-            <div class="navicon2">
-                <div class="hamburger" id="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+    <div class="navbar show-menu">
+        <div class="headerconteiner">
+            <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo"></a>
+            <nav>
+                <ul class="show menu" id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contacto-nos.html">Contato</a></li>
+                    <li><a href="conta.html">Conta</a></li>
+                </ul>
+            </nav>
+            <div class="navicon">
+                <a href="produtos.html"><img src="images/logos/cart.png"></a>
+                <div class="navicon2">
+                    <div class="hamburger" id="hamburger">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </div>
+
+         
     </div>
-    <!-- HEADER (abaixo da navbar) -->
-    
-        <div class="d-flex justify-content-between align-items-center mb-4">
+     <!-- HEADER -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Compras</h2>
             <div class="d-flex gap-2 align-items-center">
-                <button onclick="mostrarHistorico()" class="btn btn-secondary">
-                    <i class="fas fa-history"></i> Histórico
-                </button>
-                <button onclick="toggleCart()" class="btn btn-outline-primary">
-                    <i class="fas fa-shopping-cart"></i> 🛒 
-                    <span id="cart-count" class="badge bg-danger">0</span>
-                </button>
+                <button onclick="mostrarHistorico()" class="btn btn-secondary"><i class="fas fa-history"></i> Histórico</button>
+                <button onclick="toggleCart()" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i> 🛒 <span id="cart-count" class="badge bg-danger">0</span></button>
             </div>
         </div>
-  
-</div>
-
 
             <!-- CARRINHO -->
         <div class="cart-container" id="cart-container">
