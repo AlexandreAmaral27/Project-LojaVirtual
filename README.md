@@ -9,7 +9,7 @@
 
 **👨‍💻 Autor**
 
-[Alexandre_Amaral](https://alexandreamaral27.github.io/project-Blog-Pessoal/about.html) <br>
+[💻 Alexandre_Amaral](https://www.instagram.com/amaral_alexandre_27) <br>
 [📧 amaralalexandre327@gmail.com](https://alexandreamaral27.github.io/Project-LojaVirtual/index.html)<br>
 [🌐 Portfólio/Blog](https://alexandreamaral27.github.io/project-Blog-Pessoal/about.html)<br>
 📱 +244 929-764-090<br>
