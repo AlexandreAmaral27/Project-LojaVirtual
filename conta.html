@@ -12,6 +12,7 @@
   <style>
     /* Faz o body ocupar a tela toda sem rolagem */
     body {
+      background-color: rgb(10, 105, 247);
       margin: 0;
       height: 100vh;
       display: flex;
@@ -124,5 +125,18 @@
     </div>
     </div>
   </main>
+
+  <!-- menu -->
+     <script>
+        const hamburger = document.getElementById("hamburger");
+        const menu = document.getElementById("menu");
+    
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          menu.classList.toggle("show");
+        });
+      </script>
+      
+<!-- menu -->
 </body>
 </html>
