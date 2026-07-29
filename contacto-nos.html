@@ -15,6 +15,103 @@
          body{
             background-color: #2c2c2c;
          }
+
+         .contact-section{
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.section-title{
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.section-title h1{
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.section-title p{
+    color: #cfcfcf;
+}
+
+.contact-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.contact-card{
+    background: #3a3a3a;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: .4s;
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+}
+
+.contact-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.5);
+}
+
+.contact-card img{
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.contact-card h3{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.contact-card p{
+    color: #d6d6d6;
+    margin-bottom: 15px;
+}
+
+.contact-card a{
+    color: #00c853;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-card button{
+    background: #00c853;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.contact-card button:hover{
+    background: #00a844;
+}
+
+.social-icons{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-icons a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.social-icons img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
     </style>
 
 </head>
@@ -52,73 +149,75 @@
 
     <main>
        
-        <div class="conteiner-contact">
-            <div class="inner-contact">
-                <h1>Entrar em Contacto</h1>
-                <p>
-                    Quer entrar em contato? Adoraríamos ouvir de você. Veja como você pode entrar em contato conosco…
-                </p>
+  <section class="contact-section">
 
+    <div class="section-title">
+        <h1>Entre em Contacto</h1>
+        <p>Estamos disponíveis para responder às suas dúvidas e ajudá-lo no que precisar.</p>
+    </div>
 
-            </div>
+    <div class="contact-grid">
 
+        <!-- WhatsApp -->
+        <div class="contact-card">
+            <img src="images/logos/chamada-telefonica.png" alt="">
+            <h3>WhatsApp</h3>
+            <p>Fale connosco rapidamente pelo WhatsApp.</p>
+
+            <a href="https://wa.me/244929764090?text=Olá%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank">
+                <button>Enviar Mensagem</button>
+            </a>
         </div>
 
-        <div class="conteiner-como-contactar">
-            <div class="inner-como-contactar">
-                <img src="images/logos/chamada-telefonica.png" alt="">
-                <h4>Contacto-nos pelo WhatsApp</h4>
-                <p>Interessado em nossos produtos? Basta pegar o telefone e ligar para nós.</p>
-                <a class="whatsapp-float" href="https://wa.me/244929764090?text=Olá%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank"><button>(+244) 929764090
-              </button></a>     
-               
+        <!-- Email -->
+        <div class="contact-card">
+            <img src="images/logos/logotipo-do-gmail.png" alt="">
+            <h3>Email</h3>
+            <p>Envie-nos uma mensagem.</p>
+
+            <a href="mailto:a.roy.store27@gmail.com">
+                a.roy.store27@gmail.com
+            </a>
+        </div>
+
+        <!-- Telefone -->
+        <div class="contact-card">
+            <img src="images/logos/telefone-fixo.png" alt="">
+            <h3>Telefone</h3>
+            <p>Ligue para o nosso atendimento.</p>
+
+            <a href="tel:+244929764090">
+                (+244) 929 764 090
+            </a>
+        </div>
+
+        <!-- Redes Sociais -->
+        <div class="contact-card">
+            <h3>Siga-nos</h3>
+
+            <div class="social-icons">
+
+                <a href="#" target="_blank">
+                    <img src="images/logos/redes-sociais/logo-instagram.jpg">
+                    <span>Instagram</span>
+                </a>
+
+                <a href="#" target="_blank">
+                    <img src="images/logos/redes-sociais/logo-facebook.jpg">
+                    <span>Facebook</span>
+                </a>
+
+                <a href="#" target="_blank">
+                    <img src="images/logos/redes-sociais/logo-github.jpg">
+                    <span>GitHub</span>
+                </a>
+
             </div>
         </div>
 
-        <div class="conteiner-como-contactar01">
-            <div class="inner-como-contactar01">
-               <div class="inner-como-contactar01-por-email">
-                <img src="images/logos/logotipo-do-gmail.png" alt="">
-                <h4>envie-nos um e-mail</h4>
-                <p><a href="mailto:a.roy.store27@gmail.com?subject=Quero%20saber%20mais&body=Olá,%20quero%20mais%20informações%20sobre%20a%20Empresa..." target="_blank">a.roy_Store@gmail.com</a></p>
+    </div>
 
-               </div>
-
-              
-
-            </div>
-            <div class="inner-como-contactar01">
-              <div class="Siga-nos">
-                
-                <h1>Siga-nos</h1>
-                <a href="https://l.instagram.com/?u=https%3A%2F%2Fwww.instagram.com%2Fa.roy_stor3%3Figsh%3DMWhkOHFmajg5NWs2Zw%253D%253D%26fbclid%3DPAZXh0bgNhZW0CMTEAAaea0BCUFCN_PMXmeFAMG6AyLUNzK1tNWQpRrQMIj4SBZgrYB0uTD-E3QBP_aA_aem_sqJSZv2ee_i6cuIlXDpKpg&e=AT2nDKtkJ6II-7OmqnCLohOxB9JJt1G3TgcN0z7W6G7Qsdwr-B5w-aMGFpOCcPx3YcfXepRvU6FW9deOpm3L1NUEdDouxyzlhW5Owqo" target="_blank"><img src="images/logos/redes-sociais/logo-instagram.jpg" alt=""></a>
-                <a href="https://www.facebook.com/722973384233176?ref=pl_edit_xav_ig_profile_page_web" target="_blank"><img src="images/logos/redes-sociais/logo-facebook.jpg" alt=""></a>
-                <a href="https://github.com/AlexandreAmaral27" target="_blank"><img src="images/logos/redes-sociais/logo-github.jpg" alt=""></a>
-               </div>
-            </div>
-
-            
-               <div>
-                <img src="images/logos/telefone-fixo.png" alt="">
-                <h4>Ligue para nós</h4>
-                <p><a href="tel:+244929764090" style="color: white; text-decoration: none;">(+244) 929764090</a></p>
-
-               </div>
-        </div>
-         
-        <div class="conteiner-como-contactar02">
-            <div class="inner-como-contactar01">
-               <div class="">
-                <img src="images/logos/pino-de-localizacao.png" alt="">
-               <h1>Visite nossas lojas</h1>
-               <p>Atualmente, estamos focados em oferecer a melhor experiência de compra online antes de expandirmos para um espaço físico.</p>
-               <p>Estamos construindo nossa marca online antes de expandirmos para um espaço físico no futuro.</p>
-               </div>
-
-               
-            </div>
-        </div>
-
+</section>
     </main>
 
 
