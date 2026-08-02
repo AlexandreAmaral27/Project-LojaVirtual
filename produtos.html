@@ -70,6 +70,15 @@ nav {
         animation: slideDown 0.3s ease-in-out;
     }
 }
+
+.produto{
+    transition: .3s;
+}
+
+.produto:hover{
+    transform: translateY(-5px);
+}
+
     </style>
     
 </head>
@@ -139,12 +148,19 @@ nav {
         <div class="cart-container" id="historico-container" style="display: none;">
             <h2>Histórico de Compras</h2>
             <ul id="historico-list" class="mb-3 "></ul>
-            <!-- <canvas id="graficoHistorico" height="200"></canvas> -->
             <button onclick="fecharHistorico()" class="btn btn2 btn-secondary mt-3">Fechar</button>
         </div>
 
 
     <main>
+
+        <div class="search-container">
+    <input
+        type="text"
+        id="search"
+        placeholder="🔍 Pesquisar produto..."
+        onkeyup="searchProducts()">
+       </div>
 
         <!-- FILTRO -->
         <div class="filter-container">
@@ -570,6 +586,29 @@ nav {
 
         updateCart();
         if (cart.length > 0) resetSessionTimer();
+
+        function searchProducts() {
+    const search = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const produtos =
+        document.querySelectorAll(".produto");
+
+    produtos.forEach(produto => {
+
+        const nome = produto
+            .querySelector("p")
+            .textContent
+            .toLowerCase();
+
+        produto.style.display =
+            nome.includes(search)
+            ? "block"
+            : "none";
+    });
+}
     </script>
 </body>
 </html>
