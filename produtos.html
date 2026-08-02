@@ -79,6 +79,233 @@ nav {
     transform: translateY(-5px);
 }
 
+/* CONTAINER DOS PRODUTOS */
+.produto-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* CARD DO PRODUTO */
+.produto{
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* IMAGENS */
+.produto img{
+    width: 100%;
+    max-width: 250px;
+    height: 220px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* TEXTO */
+.produto p{
+    margin: 5px 0;
+}
+
+/* BOTÃO */
+.add-to-cart{
+    width: 100%;
+    margin-top: auto;
+}
+
+/* TABLET */
+@media (max-width: 768px){
+    .produto-container{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .produto img{
+        height: 180px;
+    }
+}
+
+/* CELULAR */
+@media (max-width: 480px){
+    .produto-container{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .produto{
+        padding: 10px;
+    }
+
+    .produto img{
+        width: 100%;
+        height: 140px;
+        object-fit: contain;
+    }
+
+    .produto p{
+        font-size: 14px;
+    }
+
+    .add-to-cart{
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+/* ===== CARRINHO E HISTÓRICO ===== */
+
+.cart-container{
+    position: fixed;
+    top: 90px;
+    right: -450px;
+    width: 400px;
+    max-width: 95%;
+    height: calc(100vh - 110px);
+    background: #fff;
+    border-radius: 20px 0 0 20px;
+    box-shadow: -5px 0 25px rgba(0,0,0,.15);
+    padding: 20px;
+    overflow-y: auto;
+    transition: .4s ease;
+    z-index: 9999;
+}
+
+.cart-container.show{
+    right: 0;
+}
+
+.cart-container h2{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #222;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* LISTA DOS PRODUTOS */
+
+#cart-items,
+#historico-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#cart-items li,
+#historico-list li{
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-left: 4px solid #0d6efd;
+    transition: .3s;
+}
+
+#cart-items li:hover,
+#historico-list li:hover{
+    transform: translateX(5px);
+}
+
+/* TOTAL */
+
+.total{
+    background: #0d6efd;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+/* BOTÕES */
+
+.checkout-btn,
+.clear-btn,
+.btn2{
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* TIMER */
+
+#session-timer{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #666;
+}
+
+/* BOTÃO WHATSAPP */
+
+.whatsapp-float{
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.whatsapp-float button{
+    width: 100%;
+    border: none;
+    background: #25D366;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.whatsapp-float button:hover{
+    transform: scale(1.02);
+}
+
+/* SCROLL PERSONALIZADA */
+
+.cart-container::-webkit-scrollbar{
+    width: 8px;
+}
+
+.cart-container::-webkit-scrollbar-thumb{
+    background: #0d6efd;
+    border-radius: 10px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 768px){
+
+    .cart-container{
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        right: -100%;
+        border-radius: 0;
+        padding-top: 80px;
+    }
+
+    .cart-container.show{
+        right: 0;
+    }
+
+    .cart-container h2{
+        font-size: 1.3rem;
+    }
+
+    .total{
+        font-size: 1rem;
+    }
+}
     </style>
     
 </head>
@@ -154,14 +381,7 @@ nav {
 
     <main>
 
-        <div class="search-container">
-    <input
-        type="text"
-        id="search"
-        placeholder="🔍 Pesquisar produto..."
-        onkeyup="searchProducts()">
-       </div>
-
+      
         <!-- FILTRO -->
         <div class="filter-container">
             <label for="category">Filtrar por categoria:</label>
@@ -177,14 +397,14 @@ nav {
        <div class="produto-container" id="product-list">
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone x/preto.jpg" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone x/preto.jpg" alt="Produto 1">
                 <p>iPhone X</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone X', 54000)">Adicionar</button> 
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone xs/branco.jpg" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone xs/branco.jpg" alt="Produto 1">
                 <p>iPhone Xs</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone Xs', 54000)">Adicionar</button> 
@@ -198,42 +418,42 @@ nav {
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 11/branco.webp" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 11/branco.webp" alt="Produto 1">
                 <p>iPhone 11</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 11', 54000)">Adicionar</button> 
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 11 pro/41chhux8krS.jpg" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 11 pro/41chhux8krS.jpg" alt="Produto 1" >
                 <p>iPhone 11 Pro </p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 11 Pro', 54000)">Adicionar</button> 
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 11 pro max/branco.jpg" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 11 pro max/branco.jpg" alt="Produto 1" >
                 <p>iPhone 11 Pro Max</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 11 Pro Max', 54000)">Adicionar</button> 
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 12/lilas.webp" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 12/lilas.webp" alt="Produto 1">
                 <p>iPhone 12</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 12', 54000)">Adicionar</button> 
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 12 pro/iphone-12-pro-max-434446.webp" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 12 pro/iphone-12-pro-max-434446.webp" alt="Produto 1" >
                 <p>iPhone 12 Pro</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 12 Pro', 54000)">Adicionar</button> 
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 12 pro max/41SLL9Zws6L._UF894,1000_QL80_.jpg" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 12 pro max/41SLL9Zws6L._UF894,1000_QL80_.jpg" alt="Produto 1">
                 <p>iPhone 12 Pro max</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 12 Pro Max', 54000)">Adicionar</button> 
@@ -243,21 +463,21 @@ nav {
 
 
            <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 13/71MKNCEgE6L.jpg" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 13/71MKNCEgE6L.jpg" alt="Produto 1">
                 <p>iPhone 13</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 13', 54000)">Adicionar</button> 
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 13 pro/iphone_13pro_im1.webp" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 13 pro/iphone_13pro_im1.webp" alt="Produto 1" >
                 <p>iPhone 13 Pro</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 13 Pro', 54000)">Adicionar</button> 
             </div>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 13 pro max/azul.jpg" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 13 pro max/azul.jpg" alt="Produto 1" >
                 <p>iPhone 13 Pro Max</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 13 Pro Max', 54000)">Adicionar</button> 
@@ -266,7 +486,7 @@ nav {
         <a class="inf-produto" href="inside.html">
             
                  <div class="produto " data-category="telefones">
-                    <img src="images/products/telephones/Iphones/iphone 14/vermelho.png" alt="Produto 1" width="260px">
+                    <img src="images/products/telephones/Iphones/iphone 14/vermelho.png" alt="Produto 1" >
                     <p>iPhone 14</p>
                     <p class="preço">#####<span>Kzs</span></p>
                     <button class="add-to-cart" onclick="addToCart('iPhone 14', 54000)">Adicionar</button> 
@@ -274,54 +494,54 @@ nav {
         </a>
 
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 14 pro/preto.png" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 14 pro/preto.png" alt="Produto 1">
                 <p>iPhone 14 Pro </p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 14 Pro', 54000)">Adicionar</button> 
             </div>
 
             <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 14 pro max/dourado.png" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 14 pro max/dourado.png" alt="Produto 1" >
                 <p>iPhone 14 Pro Max</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 14 Pro Max', 54000)">Adicionar</button> 
             </div>
              <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 15/rosa.png" alt="Produto 2" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 15/rosa.png" alt="Produto 2">
                 <p>iPhone 15</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 15', 70000)">Adicionar</button> 
             </div>
             <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 15 pro/preto.png" alt="Produto 3" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 15 pro/preto.png" alt="Produto 3" >
                 <p>iPhone 15 Pro</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 15 Pro', 25000)">Adicionar</button> 
             </div>
 
             <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 15 pro max/natural.png" alt="Produto 3" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 15 pro max/natural.png" alt="Produto 3" >
                 <p>iPhone 15 Pro Max</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 15 Pro Max', 25000)">Adicionar</button> 
             </div>
 
             <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 16/preto.jpg" alt="Produto 3" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 16/preto.jpg" alt="Produto 3" >
                 <p>iPhone 16</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 16', 25000)">Adicionar</button> 
             </div>
 
             <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 16 plus/verde.webp" alt="Produto 3" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 16 plus/verde.webp" alt="Produto 3">
                 <p>iPhone 16 Plus</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 16 Plus', 25000)">Adicionar</button> 
             </div>
 
               <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 16 pro/deserto.webp" alt="Produto 3" width="260px">
+                <img src="images/products/telephones/Iphones/iphone 16 pro/deserto.webp" alt="Produto 3">
                 <p>iPhone 16 Pro</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('iPhone 16 Pro', 25000)">Adicionar</button> 
@@ -338,7 +558,7 @@ nav {
           
 
             <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/samsung/product-9.png" alt="Produto 1" width="260px">
+                <img src="images/products/telephones/samsung/product-9.png" alt="Produto 1">
                 <p>Samsung Galaxi S23 Ultra</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Samsung Galaxi S23 Ultra', 54000)">Adicionar</button> 
@@ -346,20 +566,20 @@ nav {
             
            
             <div class="produto" data-category="games">
-                <img src="images/products/games/x box/product-12.png" alt="Produto 4" width="260px">
+                <img src="images/products/games/x box/product-12.png" alt="Produto 4" >
                 <p>Xbox</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Xbox', 100000)">Adicionar</button> 
             </div>
 
             <div class="produto" data-category="games">
-                <img src="images/products/games/play 5/product-14.png" alt="Produto 2" width="260px">
+                <img src="images/products/games/play 5/product-14.png" alt="Produto 2" >
                 <p>Play 5</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('Play 5', 70000)">Adicionar</button> 
             </div>
             <div class="produto" data-category="computadores">
-                <img src="images/products/games/pc-gamer/product-15.png" alt="Produto 3" width="260px">
+                <img src="images/products/games/pc-gamer/product-15.png" alt="Produto 3">
                 <p>PC Gamer</p>
                 <p class="preço">#####<span>Kzs</span></p>
                 <button class="add-to-cart" onclick="addToCart('PC Gamer', 25000)">Adicionar</button> 
