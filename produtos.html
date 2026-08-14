@@ -17,7 +17,99 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> 
     <!-- CHART.JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+    <style>
+#productModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#productModal.show {
+    display: flex;
+}
+
+.product-modal-box {
+    background: white;
+    width: min(900px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    padding: 25px;
+    position: relative;
+}
+
+.close-product {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: 0;
+    background: #eee;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.product-main-img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    background: #f5f5f5;
+    border-radius: 15px;
+}
+
+.product-gallery {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    overflow-x: auto;
+}
+
+.product-gallery img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.product-info h2 {
+    font-size: 30px;
+}
+
+.product-info p {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stock {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+@media(max-width:700px) {
+    .product-details {
+        grid-template-columns: 1fr;
+    }
+
+    .product-main-img {
+        height: 300px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -106,6 +198,21 @@
 
        <div class="produto-container" id="product-list">
 
+        <div class="produto"
+     data-category="telefones"
+     onclick="abrirProduto(
+        'iPhone 14',
+        54000,
+        'images/products/telephones/Iphones/iphone 14/vermelho.png',
+        '128 GB',
+        'Vermelho',
+        '92%',
+        'Usado',
+        [
+            'images/products/telephones/Iphones/iphone 14/frente.png',
+            'images/products/telephones/Iphones/iphone 14/traseira.png'
+        ]
+     )">
              <div class="produto" data-category="telefones">
                 <img src="images/products/telephones/Iphones/iphone x/preto.jpg" alt="Produto 1">
                 <p>iPhone X</p>
@@ -203,13 +310,21 @@
                 </div>
         </a>
 
-             <div class="produto" data-category="telefones">
-                <img src="images/products/telephones/Iphones/iphone 14 pro/preto.png" alt="Produto 1">
-                <p>iPhone 14 Pro </p>
-                <p class="preço">#####<span>Kzs</span></p>
-                <button class="add-to-cart" onclick="addToCart('iPhone 14 Pro', 54000)">Adicionar</button> 
-            </div>
-
+           <div class="produto"
+     data-category="telefones"
+     onclick="abrirProduto(
+        'iPhone 14',
+        54000,
+        'images/products/telephones/Iphones/iphone 14/vermelho.png',
+        '128 GB',
+        'Vermelho',
+        '92%',
+        'Usado',
+        [
+            'images/products/telephones/Iphones/iphone 14/frente.png',
+            'images/products/telephones/Iphones/iphone 14/traseira.png'
+        ]
+     )">
             <div class="produto" data-category="telefones">
                 <img src="images/products/telephones/Iphones/iphone 14 pro max/dourado.png" alt="Produto 1" >
                 <p>iPhone 14 Pro Max</p>
@@ -299,7 +414,56 @@
         </div>
        
     </main>
+<div id="productModal" onclick="fecharProduto(event)">
+    <div class="product-modal-box">
 
+        <button class="close-product" onclick="fecharProduto()">×</button>
+
+        <div class="product-details">
+
+            <div>
+                <img id="produtoImagemPrincipal"
+                     class="product-main-img">
+
+                <div class="product-gallery" id="produtoGaleria"></div>
+            </div>
+
+            <div class="product-info">
+
+                <h2 id="produtoNome"></h2>
+
+                <h3 id="produtoPreco"></h3>
+
+                <p>💾 <strong>Armazenamento:</strong>
+                    <span id="produtoArmazenamento"></span>
+                </p>
+
+                <p>🎨 <strong>Cor:</strong>
+                    <span id="produtoCor"></span>
+                </p>
+
+                <p>🔋 <strong>Bateria:</strong>
+                    <span id="produtoBateria"></span>
+                </p>
+
+                <p>📦 <strong>Estado:</strong>
+                    <span id="produtoEstado"></span>
+                </p>
+
+                <p class="stock">
+                    ✅ Em stock
+                </p>
+
+                <button id="produtoAdicionar"
+                        class="add-to-cart">
+                    🛒 Adicionar ao carrinho
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
     <footer class="gray-background">
         <div class="page-inner-content footer-content">
             <div class="download-options">
@@ -538,6 +702,68 @@
             ? "block"
             : "none";
     });
+}
+    </script>
+
+    <script>
+        function abrirProduto(nome, preco, imagem, armazenamento, cor, bateria, estado, imagens = []) {
+
+    document.getElementById("produtoNome").textContent = nome;
+
+    document.getElementById("produtoPreco").textContent =
+        preco.toLocaleString() + " Kzs";
+
+    document.getElementById("produtoArmazenamento").textContent =
+        armazenamento;
+
+    document.getElementById("produtoCor").textContent =
+        cor;
+
+    document.getElementById("produtoBateria").textContent =
+        bateria;
+
+    document.getElementById("produtoEstado").textContent =
+        estado;
+
+    document.getElementById("produtoImagemPrincipal").src = imagem;
+
+    const galeria = document.getElementById("produtoGaleria");
+
+    galeria.innerHTML = "";
+
+    const fotos = [imagem, ...imagens];
+
+    fotos.forEach(foto => {
+
+        const img = document.createElement("img");
+
+        img.src = foto;
+
+        img.onclick = () => {
+            document.getElementById("produtoImagemPrincipal").src = foto;
+        };
+
+        galeria.appendChild(img);
+    });
+
+    document.getElementById("produtoAdicionar").onclick = () => {
+        addToCart(nome, preco);
+    };
+
+    document.getElementById("productModal").classList.add("show");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function fecharProduto(event) {
+
+    if (event && event.target.id !== "productModal")
+        return;
+
+    document.getElementById("productModal").classList.remove("show");
+
+    document.body.style.overflow = "";
 }
     </script>
 </body>
