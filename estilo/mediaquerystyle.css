@@ -27,13 +27,7 @@
         flex-direction: column;
        
     }
-    nav ul li:hover{
-        padding-left: 90px;
-        padding-right: 90px;
-        
-        background-color: #47434342;
-        border-radius: 999px;
-    }
+ 
     nav ul li{
      
         text-align: center;
@@ -126,3 +120,6 @@
        
    }
 } 
+
+
+
