@@ -420,9 +420,7 @@ body{
    transition: 0.3s;
    width: 115px;
 }
-button:hover {
-   background-color: #555;
-}
+
 .indicators {
    margin-top: 10px;
 }

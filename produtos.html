@@ -9,193 +9,186 @@
     <link rel="stylesheet" href="estilo/style.css">
     <link rel="stylesheet" href="estilo/menu.css">
     <link rel="stylesheet" href="estilo/mediaquerystyle.css">
-    <link rel="stylesheet" href="estilo/mediaquerystyle-produto.css"> 
 
-    <!-- BOOTSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!--FONT AWESOME -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> 
-    <!-- CHART.JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-#productModal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.7);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-#productModal.show {
-    display: flex;
-}
-
-.product-modal-box {
-    background: white;
-    width: min(900px, 100%);
-    max-height: 90vh;
-    overflow-y: auto;
-    border-radius: 18px;
-    padding: 25px;
-    position: relative;
-}
-
-.close-product {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    border: 0;
-    background: #eee;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.product-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.product-main-img {
-    width: 100%;
-    height: 400px;
-    object-fit: contain;
-    background: #f5f5f5;
-    border-radius: 15px;
-}
-
-.product-gallery {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-    overflow-x: auto;
-}
-
-.product-gallery img {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.product-info h2 {
-    font-size: 30px;
-}
-
-.product-info p {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.stock {
-    color: #16a34a;
-    font-weight: bold;
-}
-
-@media(max-width:700px) {
-    .product-details {
-        grid-template-columns: 1fr;
-    }
-
-    .product-main-img {
-        height: 300px;
-    }
-}
+<style>
+   
+  
 </style>
 </head>
 
 <body>
     
-   <div class="navbar show-menu">
+<div class="navbar show-menu">
+
     <div class="headerconteiner">
-        <!-- Logo colada no início -->
-        <a href="index.html"><img src="images/a.roy/logo.png" alt="Logo" class="logo"></a>
-        
-        <!-- Menu central -->
+
+        <!-- LOGO -->
+        <a href="index.html" class="logo-link">
+            <img
+                src="images/a.roy/logo.png"
+                alt="A.roy_Store"
+                class="logo">
+        </a>
+
+
+        <!-- MENU -->
         <nav>
             <ul class="show menu" id="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contacto-nos.html">Contato</a></li>
-                <li><a href="conta.html">Conta</a></li>
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="produtos.html">Produtos</a>
+                </li>
+
+                <li>
+                    <a href="sobre.html">Sobre</a>
+                </li>
+
+                <li>
+                    <a href="contacto-nos.html">Contato</a>
+                </li>
+
+                <li>
+                    <a href="conta.html">Conta</a>
+                </li>
+
             </ul>
         </nav>
 
-        <!-- Ícones carrinho + hambúrguer no fim -->
+
+        <!-- AÇÕES -->
         <div class="navicon">
-            <a href="produtos.html"><img src="images/logos/cart.png"></a>
+
+         <button
+    class="cart-floating"
+    onclick="toggleCart()"
+    aria-label="Abrir carrinho">
+
+    <span class="cart-icon">🛒</span>
+
+    <span id="cart-count">0</span>
+
+</button>
+
+
             <div class="navicon2">
-                <div class="hamburger" id="hamburger">
+
+                <div
+                    class="hamburger"
+                    id="hamburger"
+                    aria-label="Abrir menu">
+
                     <div></div>
                     <div></div>
                     <div></div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
-    <!-- HEADER (abaixo da navbar) -->
-    
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Compras</h2>
-            <div class="d-flex gap-2 align-items-center">
-                <button onclick="mostrarHistorico()" class="btn btn-secondary">
-                    <i class="fas fa-history"></i> Histórico
-                </button>
-                <button onclick="toggleCart()" class="btn btn-outline-primary">
-                    <i class="fas fa-shopping-cart"></i> 🛒 
-                    <span id="cart-count" class="badge bg-danger">0</span>
-                </button>
-            </div>
-        </div>
-  
+
 </div>
 
 
-            <!-- CARRINHO -->
         <div class="cart-container" id="cart-container">
-            <h2>Seu Carrinho</h2>
-            <ul id="cart-items" class="list-unstyled"></ul>
-            <p class="total fw-bold" id="cart-total-line">Total: 0 Kzs</p>
-            <button class="checkout-btn btn btn-primary mb-2" onclick="checkout()">Finalizar Compra</button>
-            <button class="clear-btn btn btn-danger" onclick="limparCarrinho()">Limpar Carrinho</button>
 
-             <a class="whatsapp-float" href="https://wa.me/244929764090?text=Olá%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank"><button>Enviar Comprovativo</button></a> 
-            <p class="mt-2 small text-muted"  id="session-timer"></p>
-            <button onclick="toggleCart()" class="btn btn2 btn-secondary">Fechar</button>
+    <div class="cart-header">
+        <h2>🛒 Carrinho</h2>
+
+        <button class="cart-close" onclick="toggleCart()">
+            ×
+        </button>
+    </div>
+
+    <ul id="cart-items" class="list-unstyled"></ul>
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+            <span>Total</span>
+            <span id="cart-total-line">0 Kzs</span>
         </div>
 
-        <!-- HISTÓRICO -->
-        <div class="cart-container" id="historico-container" style="display: none;">
-            <h2>Histórico de Compras</h2>
-            <ul id="historico-list" class="mb-3 "></ul>
-            <button onclick="fecharHistorico()" class="btn btn2 btn-secondary mt-3">Fechar</button>
-        </div>
+        <button class="checkout-btn" onclick="checkout()">
+            Finalizar compra
+        </button>
 
+        <button class="clear-btn" onclick="limparCarrinho()">
+            Limpar carrinho
+        </button>
+
+        <p id="session-timer"
+           class="text-center small text-muted mt-3">
+        </p>
+
+    </div>
+
+</div>
 
     <main>
 
       
         <!-- FILTRO -->
-        <div class="filter-container">
-            <label for="category">Filtrar por categoria:</label>
-            <select id="category" onchange="filterProducts()">
-                <option value="all">Todos</option>
-                <option value="telefones">Telefones</option>
-                <option value="computadores">Computadores</option>
-                <option value="games">Games/Acessórios</option>
-                <option value="acessorios">Tênis e outros Acessórios</option>
-            </select>
+      <!-- FILTRO DE CATEGORIAS MODERNO -->
+<section class="category-filter">
+
+    <div class="category-header">
+        <div>
+            <span class="category-label">A.roy_Store</span>
+            <h2>Encontre o que procura</h2>
         </div>
 
+        <span class="products-count" id="products-count">
+            0 produtos
+        </span>
+    </div>
+
+    <div class="category-buttons">
+
+        <button class="category-btn active"
+                data-category="all"
+                onclick="filterProducts('all', this)">
+            <span class="category-icon">✨</span>
+            <span>Todos</span>
+        </button>
+
+        <button class="category-btn"
+                data-category="telefones"
+                onclick="filterProducts('telefones', this)">
+            <span class="category-icon">📱</span>
+            <span>Telefones</span>
+        </button>
+
+        <button class="category-btn"
+                data-category="computadores"
+                onclick="filterProducts('computadores', this)">
+            <span class="category-icon">💻</span>
+            <span>Computadores</span>
+        </button>
+
+        <button class="category-btn"
+                data-category="games"
+                onclick="filterProducts('games', this)">
+            <span class="category-icon">🎮</span>
+            <span>Games</span>
+        </button>
+
+        <button class="category-btn"
+                data-category="acessorios"
+                onclick="filterProducts('acessorios', this)">
+            <span class="category-icon">👟</span>
+            <span>Acessórios</span>
+        </button>
+
+    </div>
+
+</section>
       <div class="produto-container" id="product-list">
 
     <div class="produto" data-category="telefones"
@@ -397,6 +390,7 @@
         <p class="preço">#####<span>Kzs</span></p>
         <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('iPhone 16 Pro',25000)">Adicionar</button>
     </div>
+    
 
     <div class="produto" data-category="telefones"
         onclick="abrirProduto('iPhone 16 Pro Max', 25000,
@@ -501,6 +495,88 @@
         </div>
     </div>
 </div>
+<!-- FORMULÁRIO DE CHECKOUT -->
+
+<div class="checkout-modal" id="checkoutModal">
+
+    <div class="checkout-box">
+
+        <div class="checkout-top">
+
+            <h2>Finalizar pedido</h2>
+
+            <button class="checkout-close"
+                    onclick="fecharCheckout()">
+                ×
+            </button>
+
+        </div>
+
+        <p class="text-muted">
+            Preencha os seus dados para enviar o pedido.
+        </p>
+
+        <div class="form-group">
+            <label>Nome completo</label>
+
+            <input
+                type="text"
+                id="clienteNome"
+                placeholder="Ex: Alexandre Amaral">
+        </div>
+
+        <div class="form-group">
+            <label>Telefone</label>
+
+            <input
+                type="tel"
+                id="clienteTelefone"
+                placeholder="Ex: 929 764 090">
+        </div>
+
+        <div class="form-group">
+            <label>Localização / Endereço</label>
+
+            <input
+                type="text"
+                id="clienteLocal"
+                placeholder="Ex: Kilamba, Luanda">
+        </div>
+
+        <div class="form-group">
+            <label>Observação</label>
+
+            <textarea
+                id="clienteObs"
+                rows="3"
+                placeholder="Alguma informação adicional?">
+            </textarea>
+        </div>
+
+        <div class="order-summary">
+
+            <h3>Resumo do pedido</h3>
+
+            <div id="checkoutItems"></div>
+
+            <div class="order-total">
+                <span>Total</span>
+                <span id="checkoutTotal">0 Kzs</span>
+            </div>
+
+        </div>
+
+        <button
+            class="whatsapp-checkout"
+            onclick="enviarPedidoWhatsApp()">
+
+            📱 Enviar pedido pelo WhatsApp
+
+        </button>
+
+    </div>
+
+</div>
     <footer class="gray-background">
         <div class="page-inner-content footer-content">
             <div class="download-options">
@@ -555,31 +631,101 @@
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
         }
+function updateCart() {
 
-        function updateCart() {
-            const cartItems = document.getElementById("cart-items");
-            const cartCount = document.getElementById("cart-count");
-            const cartTotalLine = document.getElementById("cart-total-line");
-            cartItems.innerHTML = "";
-            let total = 0, count = 0;
+    const cartItems = document.getElementById("cart-items");
+    const cartCount = document.getElementById("cart-count");
+    const cartTotalLine = document.getElementById("cart-total-line");
 
-            cart.forEach((item, index) => {
-                const li = document.createElement("li");
-                li.innerHTML = `
-                    ${item.name} - ${item.quantity} x ${item.price.toLocaleString()} Kzs =
-                    <strong>${(item.quantity * item.price).toLocaleString()} Kzs</strong>
-                    <button class="btn btn-sm btn-danger ms-2" onclick="removeFromCart(${index})">X</button>
-                `;
-                cartItems.appendChild(li);
-                total += item.price * item.quantity;
-                count += item.quantity;
-            });
+    cartItems.innerHTML = "";
 
-            cartCount.innerText = count;
-            cartTotalLine.innerText = `Total: ${total.toLocaleString()} Kzs`;
-            localStorage.setItem("cart", JSON.stringify(cart));
-        }
+    let total = 0;
+    let count = 0;
 
+    cart.forEach((item, index) => {
+
+        const subtotal = item.price * item.quantity;
+
+        total += subtotal;
+        count += item.quantity;
+
+        const li = document.createElement("li");
+
+        li.className = "cart-product";
+
+        li.innerHTML = `
+
+            <div class="cart-product-info">
+
+                <div class="cart-product-name">
+                    ${item.name}
+                </div>
+
+                <div class="cart-product-price">
+                    ${item.price.toLocaleString()} Kzs
+                </div>
+
+                <div class="quantity-control">
+
+                    <button onclick="alterarQuantidade(${index}, -1)">
+                        −
+                    </button>
+
+                    <strong>${item.quantity}</strong>
+
+                    <button onclick="alterarQuantidade(${index}, 1)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+            <strong>
+                ${subtotal.toLocaleString()} Kzs
+            </strong>
+
+            <button
+                class="remove-product"
+                onclick="removeFromCart(${index})">
+
+                🗑
+
+            </button>
+        `;
+
+        cartItems.appendChild(li);
+    });
+
+    cartCount.innerText = count;
+
+const cartButton = document.querySelector(".cart-floating");
+
+if (count > 0) {
+    cartButton.classList.add("has-items");
+} else {
+    cartButton.classList.remove("has-items");
+}
+
+    cartTotalLine.innerText =
+        total.toLocaleString() + " Kzs";
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateCart();
+});
+function alterarQuantidade(index, quantidade) {
+
+    cart[index].quantity += quantidade;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    updateCart();
+}
         function addToCart(name, price) {
             const existing = cart.find(i => i.name === name);
             if (existing) {
@@ -607,28 +753,52 @@
             }
         }
 
-        function checkout() {
-            if (cart.length === 0) return alert("Seu carrinho está vazio!");
-            let total = 0, resumo = "Compra finalizada:\n";
-            cart.forEach(item => {
-                resumo += `${item.quantity}x ${item.name} = ${(item.quantity * item.price).toLocaleString()} Kzs\n`;
-                total += item.quantity * item.price;
-            });
-            resumo += `Total: ${total.toLocaleString()} Kzs`;
-            alert(resumo);
+       function checkout() {
 
-            const historico = JSON.parse(localStorage.getItem("historicoCompras")) || [];
-            historico.push({
-                data: new Date().toLocaleString(),
-                itens: [...cart],
-                total: total
-            });
-            localStorage.setItem("historicoCompras", JSON.stringify(historico));
 
-            limparCarrinho();
-            toggleCart();
-        }
+    if (cart.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
 
+    const checkoutItems =
+        document.getElementById("checkoutItems");
+
+    checkoutItems.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        const subtotal =
+            item.price * item.quantity;
+
+        total += subtotal;
+
+        checkoutItems.innerHTML += `
+
+            <div class="order-line">
+
+                <span>
+                    ${item.quantity}x ${item.name}
+                </span>
+
+                <strong>
+                    ${subtotal.toLocaleString()} Kzs
+                </strong>
+
+            </div>
+
+        `;
+    });
+
+    document.getElementById("checkoutTotal").innerText =
+        total.toLocaleString() + " Kzs";
+
+    document
+        .getElementById("checkoutModal")
+        .classList.add("show");
+}
         function toggleCart() {
             document.getElementById("cart-container").classList.toggle("show");
             resetSessionTimer();
@@ -651,7 +821,12 @@
                 }
             }, 1000);
         }
+function fecharCheckout() {
 
+    document
+        .getElementById("checkoutModal")
+        .classList.remove("show");
+}
         function updateTimer() {
             const min = Math.floor(sessionTimeLeft / 60);
             const sec = sessionTimeLeft % 60;
@@ -700,16 +875,56 @@
             });
         }
 
-        function filterProducts() {
-            const category = document.getElementById("category").value;
-            const products = document.querySelectorAll(".produto");
-            products.forEach(product => {
-                product.style.display = (category === "all" || product.getAttribute("data-category") === category)
-                    ? "block"
-                    : "none";
-            });
-        }
+     function filterProducts(category, button) {
 
+    const products = document.querySelectorAll(".produto");
+    const buttons = document.querySelectorAll(".category-btn");
+    const count = document.getElementById("products-count");
+
+    let visibleProducts = 0;
+
+    // Atualizar botão ativo
+    buttons.forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    // Filtrar produtos
+    products.forEach(product => {
+
+        const productCategory =
+            product.getAttribute("data-category");
+
+        const shouldShow =
+            category === "all" ||
+            productCategory === category;
+
+        if (shouldShow) {
+
+            product.style.display = "block";
+
+            setTimeout(() => {
+                product.classList.remove("filter-hidden");
+            }, 10);
+
+            visibleProducts++;
+
+        } else {
+
+            product.classList.add("filter-hidden");
+
+            setTimeout(() => {
+                product.style.display = "none";
+            }, 250);
+        }
+    });
+
+    // Atualizar contador
+    count.textContent =
+        visibleProducts +
+        (visibleProducts === 1 ? " produto" : " produtos");
+}
         document.getElementById("hamburger").addEventListener("click", () => {
             document.getElementById("hamburger").classList.toggle("active");
             document.getElementById("menu").classList.toggle("show");
@@ -717,7 +932,14 @@
 
         updateCart();
         if (cart.length > 0) resetSessionTimer();
+document.addEventListener("DOMContentLoaded", () => {
 
+    const firstButton =
+        document.querySelector(".category-btn.active");
+
+    filterProducts("all", firstButton);
+
+});
         function searchProducts() {
     const search = document
         .getElementById("search")
@@ -739,6 +961,115 @@
             ? "block"
             : "none";
     });
+}
+function enviarPedidoWhatsApp() {
+
+    const nome =
+        document.getElementById("clienteNome").value.trim();
+
+    const telefone =
+        document.getElementById("clienteTelefone").value.trim();
+
+    const local =
+        document.getElementById("clienteLocal").value.trim();
+
+    const obs =
+        document.getElementById("clienteObs").value.trim();
+
+    if (!nome || !telefone || !local) {
+
+        alert("Preencha o nome, telefone e localização.");
+
+        return;
+    }
+
+    let total = 0;
+
+    let mensagem =
+        "🛍️ *NOVO PEDIDO — A.ROY_STORE*%0A%0A";
+
+    mensagem +=
+        "👤 *Cliente:* " + nome + "%0A";
+
+    mensagem +=
+        "📱 *Telefone:* " + telefone + "%0A";
+
+    mensagem +=
+        "📍 *Localização:* " + local + "%0A%0A";
+
+    mensagem +=
+        "🛒 *PRODUTOS:*%0A";
+
+    cart.forEach(item => {
+
+        const subtotal =
+            item.price * item.quantity;
+
+        total += subtotal;
+
+        mensagem +=
+            "• " +
+            item.quantity +
+            "x " +
+            item.name +
+            " — " +
+            subtotal.toLocaleString() +
+            " Kzs%0A";
+    });
+
+    mensagem +=
+        "%0A💰 *TOTAL: " +
+        total.toLocaleString() +
+        " Kzs*%0A";
+
+    if (obs) {
+
+        mensagem +=
+            "%0A📝 *Observação:* " +
+            obs;
+    }
+
+    const numero =
+        "244929764090";
+
+    const url =
+        `https://wa.me/${numero}?text=${mensagem}`;
+
+    window.open(url, "_blank");
+
+    // guardar histórico
+    const historico =
+        JSON.parse(
+            localStorage.getItem("historicoCompras")
+        ) || [];
+
+    historico.push({
+
+        data: new Date().toLocaleString(),
+
+        cliente: nome,
+
+        telefone: telefone,
+
+        local: local,
+
+        itens: [...cart],
+
+        total: total
+    });
+
+    localStorage.setItem(
+        "historicoCompras",
+        JSON.stringify(historico)
+    );
+
+    cart = [];
+
+    updateCart();
+
+    fecharCheckout();
+
+    toggleCart();
 }
     </script>
 
